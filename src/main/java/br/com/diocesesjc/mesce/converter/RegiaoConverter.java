@@ -11,8 +11,9 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegiaoConverter {
+public class RegiaoConverter extends Converter<Regiao, RegiaoRequest, RegiaoResponse> {
 
+    @Override
     public Regiao convert(RegiaoRequest regiaoRequest) {
         return Regiao.builder()
             .id(regiaoRequest.getId())
@@ -21,16 +22,23 @@ public class RegiaoConverter {
             .build();
     }
 
+    @Override
     public Page<RegiaoResponse> convert(Page<Regiao> regioes) {
-        List<RegiaoResponse> regiaoResponses = regioes.stream()
-            .map(r -> RegiaoResponse.builder()
-                .id(r.getId())
-                .name(r.getName())
-                .userId(r.getUser().getId())
-                .userName(r.getUser().getName())
-                .build())
-            .collect(Collectors.toList());
-
+        List<RegiaoResponse> regiaoResponses = convert(regioes.getContent());
         return new PageImpl<>(regiaoResponses);
+    }
+
+    @Override
+    public List<RegiaoResponse> convert(List<Regiao> list) {
+        return list.stream()
+            .map(r -> {
+                RegiaoResponse response = new RegiaoResponse();
+                response.setId(r.getId());
+                response.setName(r.getName());
+                response.setUserId(r.getUser().getId());
+                response.setUserName(r.getUser().getName());
+                return response;
+            })
+            .collect(Collectors.toList());
     }
 }

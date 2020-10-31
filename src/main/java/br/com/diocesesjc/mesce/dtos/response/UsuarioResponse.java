@@ -5,7 +5,4 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class RegiaoResponse extends DtoResponse {
-    private Long userId;
-    private String userName;
-}
+public class UsuarioResponse extends DtoResponse { }

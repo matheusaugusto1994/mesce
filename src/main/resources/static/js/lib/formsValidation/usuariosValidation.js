@@ -64,7 +64,7 @@ var FormValidation = function () {
             
             //Campo Especial, Tratado individualmente
             $( "#role" ).rules( "add", {
-            	required: true
+            	required: false
             });
             
             //apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.

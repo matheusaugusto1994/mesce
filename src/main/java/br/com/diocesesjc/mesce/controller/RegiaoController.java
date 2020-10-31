@@ -16,22 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/regiao")
-public class RegiaoController {
-
-    private final RegiaoService regiaoService;
+public class RegiaoController extends CrudController<RegiaoService, RegiaoRequest> {
 
     public RegiaoController(RegiaoService regiaoService) {
-        this.regiaoService = regiaoService;
-    }
-
-    @PostMapping
-    public ResponseEntity<Page<RegiaoResponse>> save(@RequestBody RegiaoRequest regiaoRequest) {
-        return ResponseEntity.ok(regiaoService.save(regiaoRequest));
-    }
-
-    @GetMapping("/{page}")
-    public ResponseEntity<Page<RegiaoResponse>> get(
-    @PathVariable Integer page, @RequestParam(value = "q", required = false, defaultValue = "") String query){
-        return ResponseEntity.ok(regiaoService.get(query, page));
+        super(regiaoService);
     }
 }

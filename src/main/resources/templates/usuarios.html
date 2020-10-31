@@ -154,15 +154,15 @@
                                             	<div class="row">
 													
 													<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="regiao">Pessoa</label>
+			                                            <label for="pessoa">Pessoa</label>
 		                                            	<select class="form-control select2me" id="pessoa" name="pessoa[id]" >
 		                                            		<option value="">Selecione</option>
-		                                            		<option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nome}" />
+		                                            		<option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.name}" />
 		                                            	</select>
                                             		</div>
                                             		
                                             		<div class="col-sm-6 ">
-			                                            <label for="regiao">Bloquear Acesso</label>
+			                                            <label for="acessoBloqueado">Bloquear Acesso</label>
 		                                            	<select class="form-control select2me" id="acessoBloqueado" name="acessoBloqueado" >
 		                                            		<option value="N" selected="selected">Não</option>
 		                                            		<option value="S">Sim</option>

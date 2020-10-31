@@ -73,24 +73,16 @@ function buscaDados(){
 function buscaParoquias(pagina){
 
 	var queryBusca = $("#queryBusca").val();
-	
-	var json = {
-		"pagina" : pagina,
-		"filtro" : queryBusca
-	}
 
 	var request = $.ajax({
-		  url: "paroquia/list",
-		  data: JSON.stringify(json),
-		  method: "POST",
-		  contentType: 'application/json; charset=utf-8',
-	});
-	
-	request.success(function(data) {
-		montaLista(data.dados);
-		montaPaginacao(data.total, data.pagina);
-		paroquiasList = data.dados;
-  	});
+		url: "paroquia/" + pagina + "?q=" + queryBusca,
+		method: "GET",
+		contentType: 'application/json; charset=utf-8',
+		success: function(data) {
+			montaLista(data.dados);
+			montaPaginacao(data.total, data.pagina);
+			paroquiasList = data.dados;
+		}});
 	
 }
 
