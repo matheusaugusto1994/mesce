@@ -1,0 +1,64 @@
+<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar-wrapper" th:fragment="menu">
+    <!-- END SIDEBAR -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+
+        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li class="nav-item start " id='li_dashboard'>
+                <a href='/home' class="nav-link nav-toggle">
+                    <i class="icon-home"></i>
+                    <span class="title">Dashboard</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+        </ul>
+
+        <ul th:each="viewGroup : ${viewGroup}" class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+
+            <li class="nav-item" >
+                <a class="nav-link nav-toggle">
+                    <i th:class="${viewGroup.icon}"></i>
+                    <span class="title" th:text="${viewGroup.name}"></span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li th:each="view : ${viewGroup.views}" class="nav-item">
+                        <a th:href="${view.url}" class="nav-link ">
+                            <span th:text="${view.name}" class="title"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </div>
+    <!-- END SIDEBAR -->
+    <input type="hidden" id="grupoTela" name="grupoTela" th:value="${grupoTela}"/>
+    <input type="hidden" id="tela" name="grupoTela" th:value="${tela}"/>
+</div>
+<!-- END SIDEBAR -->
+
+<script type="text/javascript">
+
+// 		$(function() {
+// 			var grupoTela = $("#grupoTela").val();
+// 			alert("oi")
+// 			var tela = $("#tela").val();
+// 			//alert(grupoTela);
+// 			$("#li_" + grupoTela).addClass("active");
+// 			//$("#li_" + grupoTela).addClass("level-opened");		
+// 			$("#li_tela_" + tela).addClass("active");
+// 			//$("#ul_" + grupoTela).attr("style","display:block");
+// 		});
+
+</script>

@@ -1,0 +1,111 @@
+.index-body {
+	display: flex;
+    flex-direction: column;
+    
+    position: absolute;
+    
+    height: 100%;
+    width: 100%;
+    
+    background-color: #FFF !important;
+	
+}
+.index-body--head {
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+    box-shadow: 0px 1px 10px 0px rgba(50,50,50,.2) !important;
+    
+    background: #FFF !important;
+}
+
+.index-body-login {
+	margin: 20px !important;
+}
+
+.index-body-login-img {
+	height: 39px;
+}
+
+.index-body--user {
+	display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    
+    color: #7f96ac;
+    
+    text-decoration: none;
+    
+    margin: 10px;
+}
+
+a:hover{
+	text-decoration: none;	
+}
+
+.index-body-content {
+ 	display: flex;
+	flex-flow: column nowrap;
+    
+    width: 100%;
+    height: 100%;
+    
+    margin-left: 0px !important;
+    
+    background-color: #EEF1F5 !important;
+}
+
+.index-body-wrapper-title {
+	flex: 1
+}
+
+.index-body-title {
+	margin: 5px !important;
+
+	font-size: 60px !important;
+	line-height: 1 !important;
+
+	text-align: center;
+}
+
+.index-body-subtitle {
+	font-size: 36px !important;
+	line-height: 1 !important;
+
+	text-align: center;
+	margin: 5px !important;
+}
+
+
+
+.index-body-wrapper-imgs {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	
+	width: 100%;
+	margin: 90px 0;
+}
+
+.index-body-wrapper-img {
+	flex: 2;
+
+	display: flex;
+    justify-content: center;
+    
+    min-width: 370px;
+    
+    padding: 0px !important;
+}
+
+.index-body-img {
+	height: 300px;
+	
+	margin: 20px 0;
+}
+
+.index-body-button {
+	display: block;
+	margin: auto;
+}

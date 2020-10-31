@@ -1,0 +1,86 @@
+<!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper" th:fragment="menu">
+                <!-- END SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="nav-item start " id='li_dashboard'>
+                            <a th:href="@{/home}" class="nav-link nav-toggle">
+                                <i class="icon-home"></i>
+                                <span class="title">Dashboard</span>
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item" id='li_cadastros'>
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-folder-alt"></i>
+                                <span class="title">Grupo de Telas</span>
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item" id='li_relatorios'>
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-bar-chart"></i>
+                                <span class="title">Telas</span>
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item" id='li_manutencao' >
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title" >Roles</span>
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item" id='li_manutencao' >
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title" >Liberar</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu" id='ul_seguranca'>
+                                <li class="nav-item" id='li_tela_permissoes'>
+                                    <a th:href="@{/permissoes}" class="nav-link ">
+                                        <span class="title">Permissões</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+
+                        
+                        
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
+                <input type="hidden" id="grupoTela" name="grupoTela" th:value="${grupoTela}"/> 
+            	<input type="hidden" id="tela" name="grupoTela" th:value="${tela}"/> 
+            </div>
+            <!-- END SIDEBAR -->
+            
+            <script>
+		
+		$(function() {
+			var grupoTela = $("#grupoTela").val();
+			var tela = $("#tela").val();
+			//alert(grupoTela);
+			$("#li_" + grupoTela).addClass("active");
+			//$("#li_" + grupoTela).addClass("level-opened");		
+			$("#li_tela_" + tela).addClass("active");
+			//$("#ul_" + grupoTela).attr("style","display:block");
+		});
+		
+	</script>

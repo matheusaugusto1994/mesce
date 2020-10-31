@@ -1,0 +1,284 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+	<!--         <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" /> -->
+
+     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
+
+     <link href="/js/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+     <!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+     <link href="/js/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+     <link href="/css/login.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/croppie/croppie.css" rel="stylesheet" type="text/css" />
+     <!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN THEME GLOBAL STYLES -->
+     <link href="/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+     <link href="/css/plugins.min.css" rel="stylesheet" type="text/css" />
+     <!-- END THEME GLOBAL STYLES -->
+
+	<!-- BEGIN THEME LAYOUT STYLES -->
+     <link href="/css/layout.min.css" rel="stylesheet" type="text/css" />
+     <link href="/css/themes/grey.min.css" rel="stylesheet" type="text/css" id="style_color" />
+     <link href="/css/custom.min.css" rel="stylesheet" type="text/css" />
+     <!-- END THEME LAYOUT STYLES -->
+
+	<!-- BEGIN CORE PLUGINS -->
+     <script src="/js/plugins/jquery.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+     <!-- END CORE PLUGINS -->
+
+	<!-- BEGIN THEME GLOBAL SCRIPTS -->
+     <script src="/js/scripts/app.js" type="text/javascript"></script>
+     <!-- END THEME GLOBAL SCRIPTS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	 <script src="/js/lib/formsValidation/usuariosValidation.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery.form.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery.serializejson.js" type="text/javascript"></script>
+     <script src="/js/plugins/funcoesBasicas.js" type="text/javascript"></script>
+     <script src="/js/plugins/maskedInput/jquery.maskedinput.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+     <!-- END PAGE LEVEL SCRIPTS -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+     <script src="/js/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+     <script src="/js/scripts/components-select2.js" type="text/javascript"></script>
+     <script src="/js/plugins/croppie/croppie.js" type="text/javascript"></script>
+     <!-- END PAGE LEVEL PLUGINS -->
+
+     <!-- BEGIN THEME LAYOUT SCRIPTS -->
+     <script src="/js/scripts/layout.js" type="text/javascript"></script>
+     <script src="/js/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+     <script src="/js/scripts/demo.js" type="text/javascript"></script>
+     <!-- END THEME LAYOUT SCRIPTS -->
+
+     <script src="/js/scripts/jquery.bootpag.min.js"></script>
+	 <script src="/js/lib/usuarios.js"></script>
+	 <script src="/js/lib/trocaSenha.js" type="text/javascript"></script>
+	
+</head>
+<!--     <span th:inline="text">[[${#httpServletRequest.remoteUser}]]</span> -->
+	<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
+
+	 	<!-- Header -->
+	 	<div th:replace="fragments/topo :: header">&nbsp;</div>
+
+		<!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+
+		<!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- Menu -->
+        	<div th:replace="fragments/menu :: menu">&nbsp;</div>
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <h3 class="page-title"> Usuários </h3>
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="#">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a href="#">Segurança</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <span>Usuários </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END PAGE HEADER-->
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <!-- BEGIN SAMPLE FORM PORTLET-->
+			
+                            <div class="form-group">
+                            	<div class="row">
+	                            	<div class="col-sm-12">
+	                            		<button id="btnNovoCadastro" class="btn btn-lg blue" onClick="abreForm();">
+	                            			Abrir Cadastro
+	                            		</button>
+	                            	</div>
+                            	</div>
+                            </div>
+
+                            <div class="portlet light" id="divCadastro" style="display: none;">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-users font-blue-soft"></i>
+                                        <span class="caption-subject font-blue-soft bold uppercase">Dados do Usuário</span>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                	<form action="#" id="formUsuarios" class="" method="post">
+
+                                		<div class="form-body">
+                                            <div class="alert alert-danger display-hide" id="divErrorCampos">
+                                                <button class="close" data-close="alert"></button> Alguns Campos neste formulário são obrigatórios. Dê uma olhada abaixo.
+                                            </div>
+
+                                            <div class="form-group">
+                                            	<div class="row">
+													
+													<div class="col-sm-6 campoObrigratorio">
+			                                            <label for="regiao">Pessoa</label>
+		                                            	<select class="form-control select2me" id="pessoa" name="pessoa[id]" >
+		                                            		<option value="">Selecione</option>
+		                                            		<option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nome}" />
+		                                            	</select>
+                                            		</div>
+                                            		
+                                            		<div class="col-sm-6 ">
+			                                            <label for="regiao">Bloquear Acesso</label>
+		                                            	<select class="form-control select2me" id="acessoBloqueado" name="acessoBloqueado" >
+		                                            		<option value="N" selected="selected">Não</option>
+		                                            		<option value="S">Sim</option>
+		                                            	</select>
+                                            		</div>
+                                            		
+												</div>
+											</div>
+											
+											<div class="form-group">
+                                            	<div class="row">		
+                                            		<div class="col-sm-3 campoObrigratorio">
+			                                            <label for="nome">Usuário <span class="required"> * </span></label>
+			                                            <div class="input-icon right">
+			                                            	<i class="fa"></i>
+			                                            	<input type="text" class="form-control" data-required="1" id="usuario" name="usuario" maxlength="200"/>
+                                            			</div>
+                                            		</div>
+
+                                            		<div class="col-sm-3 campoObrigratorio">
+			                                            <label for="nome">Senha <span class="required"> * </span></label>
+			                                            <div class="input-icon right">
+			                                            	<i class="fa"></i>
+			                                            	<input type="password" class="form-control" data-required="1" id="senha" name="senha" maxlength="200"/>
+                                            			</div>
+                                            		</div>
+
+                                            		<div class="col-sm-3 campoObrigratorio">
+			                                            <label for="nome">Confirmar Senha <span class="required"> * </span></label>
+			                                            <div class="input-icon right">
+			                                            	<i class="fa"></i>
+			                                            	<input type="password" class="form-control" data-required="1" id="confirmarSenha" name="confirmarSenha" maxlength="200"/>
+                                            			</div>
+                                            		</div>
+													
+													<div class="col-sm-3 campoObrigratorio">
+				                                        <label for="nivel">Níveis</label>
+				                                        <div class="input-group select2-bootstrap-prepend">
+				                                            <div class="input-icon right">
+											                	<i class="fa"></i>
+					                                            <select multiple="multiple" id="role" name="role[id]" class="form-control select2 multiSelect" >
+				                                            		<option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.role.value}" />
+					                                            </select>
+				                                        	</div>
+				                                        </div>
+				                                    </div>
+<!-- 													<div class="col-sm-3 campoObrigratorio"> -->
+<!-- 			                                            <label for="regiao">Nível <span class="required"> * </span></label> -->
+<!-- 		                                            	<div class="input-icon right"> -->
+<!-- 									                    	<i class="fa"></i> -->
+<!-- 			                                            	<select multiple="multiple" class="form-control select2 multiSelect" id="role" name="role[id]" > -->
+<!-- 			                                            		<option value="">Selecione</option> -->
+<!-- 			                                            		<option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.role.value}" /> -->
+<!-- 			                                            	</select> -->
+<!--                                             			</div> -->
+<!--                                             		</div> -->
+													
+												</div>
+											</div>
+
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <div class="row" >
+                                                <div class="col-md-offset-8 col-md-4" align="right">
+                                                	<input type="hidden" name="id" id="id" />
+                                                    <a class="btn blue" onClick="limpaCampos('formUsuarios');">Novo Cadastro</a>
+                                                    <button type="submit" class="btn red" onClick="salvarDados();">Salvar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                	</form>
+
+                                </div>
+                            </div>
+                            <!-- END SAMPLE FORM PORTLET-->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+	                    <div class="row">
+	                    	<div class="col-sm-12" align="right">
+	                    		<div class="input-icon right input-medium margin-top-10">
+                                   	<i class="fa fa-search"></i>
+                                      	<input type="text" class="form-control" id="queryBusca" name="queryBusca" onKeyUp="buscaUsuarios('1');" placeholder="Digite Aqui para Pesquisar..."/>
+								</div>
+	                    	</div>
+	                    </div>
+                    </div>
+
+                    <div class="form-group">
+	                    <div class="row">
+		                    <div class="col-sm-12" id="divListaUsuarios"></div>
+		                    <div id="divPaginacao" class="divPaginacao"  align="center"></div>
+	                    </div>
+                    </div>
+
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+
+        </div>
+        <!-- END CONTAINER -->
+
+		<!-- Footer -->
+       <div th:replace="fragments/rodape :: footer">&nbsp;</div>
+
+	</body>
+	
+	
+    
+    <script>
+        $(function(){
+         	buscaDados();
+        });
+    </script>
+</html>

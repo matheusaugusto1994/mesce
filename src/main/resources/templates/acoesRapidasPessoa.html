@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+	<!--         <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" /> -->
+
+     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
+
+     <link href="/js/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+     <!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+     <link href="/js/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+     <!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN THEME GLOBAL STYLES -->
+     <link href="/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+     <link href="/css/plugins.min.css" rel="stylesheet" type="text/css" />
+     <!-- END THEME GLOBAL STYLES -->
+
+	<!-- BEGIN THEME LAYOUT STYLES -->
+     <link href="/css/layout.min.css" rel="stylesheet" type="text/css" />
+     <link href="/css/themes/grey.min.css" rel="stylesheet" type="text/css" id="style_color" />
+     <link href="/css/custom.min.css" rel="stylesheet" type="text/css" />
+     <!-- END THEME LAYOUT STYLES -->
+
+	<!-- BEGIN CORE PLUGINS -->
+     <script src="/js/plugins/jquery.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-switch/js/bootstrap-switch.js" type="text/javascript"></script>
+     <!-- END CORE PLUGINS -->
+
+	<!-- BEGIN THEME GLOBAL SCRIPTS -->
+     <script src="/js/scripts/app.js" type="text/javascript"></script>
+     <!-- END THEME GLOBAL SCRIPTS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="/js/lib/formsValidation/relacaoNucleosValidation.js" type="text/javascript"></script>
+	<script src="/js/lib/formsValidation/reciclagemValidation.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery.form.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery.serializejson.js" type="text/javascript"></script>
+     <script src="/js/plugins/funcoesBasicas.js" type="text/javascript"></script>
+     <script src="/js/plugins/maskedInput/jquery.maskedinput.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+     <!-- END PAGE LEVEL SCRIPTS -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+     <script src="/js/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+     <script src="/js/scripts/components-select2.js" type="text/javascript"></script>
+     <!-- END PAGE LEVEL PLUGINS -->
+
+     <!-- BEGIN THEME LAYOUT SCRIPTS -->
+     <script src="/js/scripts/layout.js" type="text/javascript"></script>
+     <script src="/js/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+     <script src="/js/scripts/demo.js" type="text/javascript"></script>
+     <!-- END THEME LAYOUT SCRIPTS -->
+     
+     <script th:inline="javascript" th:src="@{/js/lib/acoesRapidasPessoa.js}"></script>
+     <script src="/js/lib/trocaSenha.js" type="text/javascript"></script>
+     
+</head>
+<!--     <span th:inline="text">[[${#httpServletRequest.remoteUser}]]</span> -->
+	<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
+
+	 	<!-- Header -->
+	 	<div th:replace="fragments/topo :: header">&nbsp;</div>
+
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+
+		<!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- Menu -->
+           	<div th:replace="fragments/menu :: menu">&nbsp;</div>
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                
+                    <!-- BEGIN PAGE HEADER-->
+                    <h3 class="page-title"> Ações Rápidas - Dados da Pessoa </h3>
+                    <!-- END PAGE HEADER-->
+
+					<div class="row">
+                        <div class="col-md-12">
+
+							<div class="portlet light" >
+                       			<div class="portlet-title">
+		                             <div class="caption caption-md">
+		                                 <i class="icon-bar-chart theme-font hide"></i>
+		                                 <span class="caption-subject font-blue-madison bold uppercase">Busque aqui pelo número do cracha ou nome da pessoa</span>
+		                             </div>
+	                         	</div>
+	                         	<div class="portlet-body">
+                        	 		<div class="row">
+                           				<div class="col-sm-5">
+				                           	<label for="cracha">Nº Cracha</label>
+				                          	<input type="text" class="form-control" data-required="1" id="cracha" name="cracha" maxlength="200" onKeyPress="if (event.keyCode==13){buscaPessoa();}"/>
+                                 		</div>
+                           				<div class="col-sm-5">
+				                           	<label for="nome">Nome</label>
+				                          	<select  class="form-control select2me" id="pessoa" name="pessoa[id]" onChange="limpaCracha();buscaPessoa(this.value);" >
+                                           		<option value="">Selecione</option>
+                                           		<option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.nome}"/>
+                                           	</select>
+                                 		</div>
+                                 		<div class="col-sm-2" align="right">
+											<br/>
+                                           	<button type="button" class="btn blue" onClick="buscaPessoa();">Pesquisar</button>
+                                    	</div>
+	                            	</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					
+					<div class="alert alert-danger" id="divError" style="display: none;"> Nenhum Resultado Encontrado. </div>
+
+					<div class="row" id="divAcoesPessoa" style="display: none;">
+                        <div class="col-md-12">
+
+                     		<!-- BEGIN PROFILE SIDEBAR -->
+                            <div class="profile-sidebar">
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light profile-sidebar-portlet ">
+                                    <!-- SIDEBAR USERPIC -->
+                                    <div class="profile-userpic">
+                                        <img id="imgPessoa" th:src="@{../img/profile.jpg}" class="img-responsive" alt="" style="max-height: 300px;"/> </div>
+                                    <!-- END SIDEBAR USERPIC -->
+                                    <!-- SIDEBAR USER TITLE -->
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name"> <span id="spanNomePessoa"></span> </div>
+                                        <div class="profile-usertitle-job"> <span id="spanRole"></span> </div>
+                                    </div>
+                                    <!-- END SIDEBAR USER TITLE -->
+                                    <!-- SIDEBAR BUTTONS -->
+                                    <div class="profile-userbuttons bootstrap-switch-small" id="div_delete_block_user">
+										<input type="hidden" name="idUsuario" id="idUsuario"/>
+                                    	<span id="spanAcessoBloqueado" style="display: none;">
+	                                    	<label>Bloquear</label>
+	                                    	<input type="checkbox" class="make-switch" id="acessoBloqueado" name="acessoBloqueado" checked="checked" data-on-text="Sim" data-off-text="Não" />
+                                    	</span>
+<!--                                         <button type="button" class="btn btn-circle green btn-sm">Abrir Cadastro</button> -->
+                                        <button type="button" class="btn btn-circle red btn-sm" onClick="exluirPessoa();">Excluir</button>
+                                       
+                                    </div>
+                                    <!-- END SIDEBAR BUTTONS -->
+                                    <!-- SIDEBAR MENU -->
+                                    <div class="profile-usermenu">
+                                        <ul class="nav navPessoas">
+<!--                                             <li id="li_overview" class="active"> -->
+<!--                                                  <a href="#" onClick="abreAcoes('overview')"> -->
+<!--                                                  <i class="icon-home"></i> Overview </a> -->
+<!--                                             </li> -->
+                                            <li id="li_info">
+                                                <a href="#" onClick="abreAcoes('info')">
+                                                <i class="icon-info"></i> Informações </a>
+                                            </li>
+                                            <li id="li_relacaoNucleos">
+                                                <a href="#" onClick="abreAcoes('relacaoNucleos')">
+                                                <i class="icon-settings"></i> Relacionar Núcleos </a>
+                                            </li>
+                                            <li id="li_reciclagem">
+                                                <a href="#" onClick="abreAcoes('reciclagem')">
+                                                <i class="icon-refresh"></i> Reciclagem </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- END MENU -->
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                                
+                            </div>
+                            <!-- END BEGIN PROFILE SIDEBAR -->
+							
+							<div class="profile-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    	
+                                    	<div class="portlet light acoes" id="div_reciclagem">
+                                    		<div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Dados da Reciclagem</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="portlet-body">
+                                            
+												<form action="#" id="formReciclagem" class="" method="post">
+													<div class="form-group">
+		                                            	<div class="row">
+		                                            		
+		                                            		<div class="col-sm-3">
+					                                            <label for="dtEntrada">Dt. Entrada Pascom</label>
+					                                            <div class="input-icon right">
+					                                            	<i class="fa"></i>
+					                                            	<input type="text" class="form-control date-picker" disabled="disabled" data-required="1" id="dtEntrada" name="dtEntrada:data" maxlength="200"/>
+		                                            			</div>
+		                                            		</div>
+		                                            		
+		                                            		<div class="col-sm-3 campoObrigratorio">
+					                                            <label for="dtTreinamento">Dt. Treinamento <span class="required"> * </span></label>
+					                                            <div class="input-icon right">
+					                                            	<i class="fa"></i>
+					                                            	<input type="text" class="form-control date-picker" data-required="1" id="dtTreinamento" name="dtTreinamento:data" maxlength="200"/>
+		                                            			</div>
+		                                            		</div>
+		                                            		
+		                                            		<div class="col-sm-3 campoObrigratorio">
+					                                            <label for="dtReciclagem">Dt. Reciclagem <span class="required"> * </span></label>
+					                                            <div class="input-icon right">
+					                                            	<i class="fa"></i>
+					                                            	<input type="text" class="form-control date-picker" data-required="1" id="dtReciclagem" name="dtReciclagem:data" maxlength="200"/>
+		                                            			</div>
+		                                            		</div>
+		                                            		
+		                                            		<div class="col-sm-3">
+					                                            <label for="dtSaida">Dt. Saída Pascom </label>
+				                                            	<input type="text" class="form-control date-picker" data-required="1" id="dtSaida" name="dtSaida:data" maxlength="200"/>
+		                                            		</div>
+		                                            	
+		                                            	
+		                                            	</div>
+		                                            </div>
+													
+													<div class="form-actions">
+			                                            <div class="row" >
+			                                                <div class="col-md-offset-8 col-md-4" align="right">
+			                                                 	<input type="hidden" name="id" id="id"/>
+			                                                    <button type="submit" class="btn blue" onClick="salvarDadosReciclagem();">Salvar</button>
+			                                                </div>
+			                                            </div>
+			                                        </div>
+			                                        
+												</form>
+		
+                                            </div>
+                                            
+                                    	</div>
+                                    	
+                                        <!-- BEGIN PORTLET -->
+                                        <div class="portlet light acoes" id="div_relacaoNucleos">
+                                            <div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Relação de Núcleos</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <form action="#" id="formRelacaoNucleos" class="" method="post">
+                                                
+	                                             	<div class="form-group"> 
+		                                            	<div class="row">
+		
+		                                            		<div class="col-sm-4 campoObrigratorio">
+					                                            <label for="regiao">Região Pastoral </label>
+				                                            	<div class="input-icon right">
+											                    	<i class="fa"></i>
+					                                            	<select  class="form-control select2me" id="regiao" name="regiao[id]" onChange="buscaParoquias(this.value);" >
+					                                            		<option value="">Selecione</option>
+					                                            		<option th:each="regiao : ${regioes}" th:value="${regiao.id}" th:text="${regiao.nome}"/>
+					                                            	</select>
+		                                            			</div>
+		                                            		</div>
+		
+		                                            		<div class="col-sm-4 campoObrigratorio">
+					                                            <label for="paroquia">Paróquia</label>
+				                                            	<div class="input-icon right">
+											                    	<i class="fa"></i>
+					                                            	<select class="form-control select2me" id="paroquia" name="paroquia[id]" onChange="buscaPastorais(this.value);">
+					                                            		<option value="">Selecione</option>
+					                                            	</select>
+		                                            			</div>
+		                                            		</div>
+		
+		                                            		<div class="col-sm-4 campoObrigratorio">
+					                                            <label for="pastoral">Pastoral </label>
+				                                            	<div class="input-icon right">
+											                    	<i class="fa"></i>
+					                                            	<select class="form-control select2me" id="pastoral" name="pastoral[id]" onChange="buscaNucleos(this.value);">
+					                                            		<option value="">Selecione</option>
+					                                            	</select>
+		                                            			</div>
+		                                            		</div>
+		
+		                                            	</div>
+	 	                                        	</div>
+                                                
+	                                                <div class="form-group campoObrigratorio">
+				                                        <label for="nucleo">Núcleos</label>
+				                                        <div class="input-group select2-bootstrap-prepend">
+				                                            <span class="input-group-btn">
+				                                                <button class="btn btn-default" type="button" data-select2-open="multi-prepend"> Núcleo </button>
+				                                            </span>
+				                                            <div class="input-icon right">
+											                	<i class="fa"></i>
+					                                            <select multiple="multiple" id="nucleo" name="nucleo[id]" class="form-control select2 multiSelect" style="width: 100%" >
+					                                                <option></option>
+					                                            </select>
+				                                        	</div>
+				                                        </div>
+				                                    </div>
+
+												</form>
+												
+                                            </div>
+                                        </div>
+                                        <!-- END PORTLET -->
+                                        
+                                        <div class="portlet light acoes" style="overflow: auto" id="div_info">
+                                            <div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Informações</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+												<div class="row">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Nome</span>
+														<span id="nome" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Endereço</span>
+														<span id="endereco" style="display: block;"></span>
+													</div>												
+												</div>	
+												<div class="row" style="margin-top: 20px">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">E-mail</span>
+														<span id="email" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Telefone</span>
+														<span id="telefone" style="display: block;"></span>
+													</div>
+												</div>
+												<div class="row" style="margin-top: 20px">												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Data de Nascimento</span>
+														<span id="dtNascimento" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Crachá</span>
+														<span id="numCracha" style="display: block;"></span>
+													</div>												
+												</div>
+												<div class="row" style="margin-top: 20px">
+													<div class="col-sm-3">
+														<span class="profile-usertitle-job">Data de Entrada</span>
+														<span id="spanDtEntrada" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-3">
+														<span class="profile-usertitle-job">Data de Treinamento</span>
+														<span id="spanDtTreinamento" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-3">
+														<span class="profile-usertitle-job">Data de Reciclagem</span>
+														<span id="spanDtReciclagem" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-3">
+														<span class="profile-usertitle-job">Data de Saída</span>
+														<span id="spanDtSaida" style="display: block;"></span>
+													</div>												
+												</div>
+												<div class="row" style="margin-top: 20px">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Função</span>
+														<span id="funcao" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Usuário do sistema</span>
+														<span id="usuario" style="display: block;"></span>
+													</div>												
+												</div>
+												
+												<div class="row" style="margin-top: 20px">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Região pastoral</span>
+														<span id="regiaoLabel" style="display: block;"></span>
+													</div>
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Paróquia</span>
+														<span id="paroquiaLabel" style="display: block;"></span>
+													</div>
+												</div>
+												
+												<div class="row" style="margin-top: 20px">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Pastorais</span>
+														<span id="pastoralLabel" style="display: block;"></span>
+													</div>
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Núcleos</span>
+														<span id="nucleoLabel" style="display: block;"></span>
+													</div>
+												</div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+								</div>
+							</div>	
+							
+							
+							
+                        </div>
+                   	</div>
+
+
+
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+
+        </div>
+        <!-- END CONTAINER -->
+
+		<!-- Footer -->
+       <div th:replace="fragments/rodape :: footer">&nbsp;</div>
+
+	</body>
+</html>

@@ -1,0 +1,39 @@
+	<div th:fragment="escreverEmail" >
+		<div class="inbox-compose form-horizontal" >
+		    <div class="inbox-form-group mail-to">
+		        <label class="control-label">Para:</label>
+		        <div class="controls controls-to">
+<!-- 		            <input type="text" class="form-control" name="destinatarioEmail" id="destinatarioEmail" /> -->
+                       <select multiple="multiple" id="destinatarioEmail" name="destinatarioEmail" class="form-control select2 multiSelect" style="width: 100%">
+                           <option></option>
+                       </select>
+		        </div>
+		    </div>
+		    
+		    <div class="inbox-form-group">
+		        <label class="control-label">Assunto:</label>
+		        <div class="controls">
+		            <input type="text" class="form-control" name="assuntoEmail" id="assuntoEmail"/> 
+		        </div>
+		    </div>
+		    <div class="inbox-form-group">
+		    	<div class="controls-row">
+			        <textarea class="inbox-editor inbox-wysihtml5 form-control" name="mensageEmail" id="mensageEmail" rows="12"></textarea>
+			        <!--blockquote content for reply message, the inner html of reply_email_content_body element will be appended into wysiwyg body. Please refer Inbox.js loadReply() function. -->
+		            <div id="divEmailReply" class="hide">
+		                <input type="text"/>
+		                <br/>
+		                <br/>
+		                <blockquote>
+		                	<span id="spanEmailReply"></span> 
+		               </blockquote>
+		            </div>
+		    	</div>
+		    </div>
+		    
+		    <div class="inbox-compose-btn" align="right">
+		        <button class="btn green" onClick="enviarEmail();"><i class="fa fa-check"></i>Enviar</button>
+		        <button class="btn default" onClick="descartarEmail();">Descartar</button>
+		    </div>
+		</div>
+	</div>

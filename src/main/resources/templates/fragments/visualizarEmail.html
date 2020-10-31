@@ -1,0 +1,29 @@
+<div th:fragment="visualizarEmail"> 	
+	<div class="inbox-header inbox-view-header">
+	    <h1 class="pull-left"> <span id="spanAssuntoVisualizarEmail"></span> </h1>
+	    <div class="pull-right">
+<!-- 	        <a href="javascript:;" class="btn btn-icon-only dark btn-outline"> -->
+<!-- 	            <i class="fa fa-print"></i> -->
+<!-- 	        </a> -->
+	    </div>
+	</div>
+	<div class="inbox-view-info">
+	    <div class="row">
+	        <div class="col-md-7">
+	        	<input type="hidden" name="idUsuarioRemetente" id="idUsuarioRemetente"/>
+	        	<input type="hidden" name="lido" id="lido"/>
+	            <span class="sbold" id="spanRemetenteEmail"></span> para
+	            <span class="sbold" id="spanDestinatariosEmail"> mim </span> em
+	          	<span id="spanDataEnvioEmail"></span>
+	        </div>
+	        <div class="col-md-5 inbox-info-btn">
+	            <div class="btn-group">
+	                <button data-messageid="23" id="btnReply" class="btn green reply-btn" onClick="responderEmail()">
+	                    <i class="fa fa-reply"></i> Responder
+	                </button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="inbox-view" id="descVisualizarEmail"></div>
+</div>

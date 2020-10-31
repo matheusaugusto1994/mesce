@@ -1,0 +1,9 @@
+/* here you can put your own css to customize and override the theme */
+.card-color-custom {
+	background-color: #4d5b69 !important;
+	color: #FFF !important;
+}
+
+.color-red {
+	color: #e7505a !important;
+}
