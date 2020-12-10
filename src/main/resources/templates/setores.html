@@ -52,7 +52,7 @@
      <!-- END THEME GLOBAL SCRIPTS -->
 
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	 <script src="/js/lib/formsValidation/pastoraisValidation.js" type="text/javascript"></script>
+	 <script src="/js/lib/formsValidation/setoresValidation.js" type="text/javascript"></script>
      <script src="/js/plugins/jquery.form.min.js" type="text/javascript"></script>
      <script src="/js/plugins/jquery.serializejson.js" type="text/javascript"></script>
      <script src="/js/plugins/funcoesBasicas.js" type="text/javascript"></script>
@@ -78,7 +78,7 @@
      <!-- END THEME LAYOUT SCRIPTS -->
 
      <script src="/js/scripts/jquery.bootpag.min.js"></script>
-	 <script src="/js/lib/pastorais.js"></script>
+	 <script src="/js/lib/setores.js"></script>
 	 <script src="/js/lib/trocaSenha.js" type="text/javascript"></script>
 	
 </head>
@@ -137,11 +137,11 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-users font-blue-soft"></i>
-                                        <span class="caption-subject font-blue-soft bold uppercase">Dados da Pastoral</span>
+                                        <span class="caption-subject font-blue-soft bold uppercase">Dados do setor</span>
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                	<form action="#" id="formPastorais" class="" method="post">
+                                	<form action="#" id="formSetores" class="" method="post">
 
                                 		<div class="form-body">
                                             <div class="alert alert-danger display-hide" id="divErrorCampos">
@@ -151,56 +151,37 @@
 											<div class="form-group">
                                             	<div class="row">	
                                             		
-                                            		<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="nome">Nome<span class="required"> * </span></label>
+                                            		<div class="col-sm-4 campoObrigratorio">
+			                                            <label for="name">Nome<span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control" data-required="1" id="nome" name="nome" maxlength="200"/>
+			                                            	<input type="text" class="form-control" data-required="1" id="name" name="name" maxlength="200"/>
                                             			</div>
                                             		</div>
                                             		
-                                            		<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="regiao">Paróquia <span class="required"> * </span></label>
+                                            		<div class="col-sm-4 campoObrigratorio">
+			                                            <label for="paroquiaId">Paróquia <span class="required"> * </span></label>
 		                                            	<div class="input-icon right">
 									                    	<i class="fa"></i>
-			                                            	<select class="form-control select2me" id="paroquia" name="paroquia[id]" >
+			                                            	<select class="form-control select2me" id="paroquiaId" name="paroquiaId" >
 			                                            		<option value="">Selecione</option>
-			                                            		<option th:each="paroquia : ${paroquias}" th:value="${paroquia.id}" th:text="${paroquia.nome}" />
+			                                            		<option th:each="paroquia : ${paroquias}" th:value="${paroquia.id}" th:text="${paroquia.name}" />
 			                                            	</select>
                                             			</div>
                                             		</div>
-                                            		
-												</div>
-											</div>
-											
-											<div class="form-group">
-                                            	<div class="row">
-                                            	
-													<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="coordenador">Coordenador <span class="required"> * </span></label>
-		                                            	<div class="input-icon right">
-									                    	<i class="fa"></i>
-			                                            	<select class="form-control select2me" id="coordenador" name="coordenador[id]" >
-			                                            		<option value="">Selecione</option>
-			                                            		<option th:each="coordenador : ${coordenadores}" th:value="${coordenador.id}" th:text="(${coordenador.pessoa}!=null)? ${coordenador.pessoa.nome}: ${coordenador.usuario}"/>
-			                                            	</select>
-                                            			</div>
-                                            		</div>
-                                            		
-                                            		<div class="col-sm-6">
-			                                            <label for="coordenador">Vice Coordenador</label>
-		                                            	<div class="input-icon right">
-									                    	<i class="fa"></i>
-			                                            	<select class="form-control select2me" id="vice" name="vice[id]" >
-			                                            		<option value="">Selecione</option>
-			                                            		<option th:each="vice : ${vices}" th:value="${vice.id}" th:text="(${vice.pessoa}!=null)? ${vice.pessoa.nome}: ${vice.usuario}"/>
-			                                            	</select>
-                                            			</div>
-                                            		</div>
-													
-												</div>
-											</div>
 
+                                                    <div class="col-sm-4 campoObrigratorio">
+                                                        <label for="userId">Coordenador <span class="required"> * </span></label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <select class="form-control select2me" id="userId" name="userId" >
+                                                                <option value="">Selecione</option>
+                                                                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.pessoa.name}"/>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+												</div>
+											</div>
                                         </div>
 
                                         <div class="form-actions">
@@ -234,7 +215,7 @@
 
                     <div class="form-group">
 	                    <div class="row">
-		                    <div class="col-sm-12" id="divListaPastorais"></div>
+		                    <div class="col-sm-12" id="divListaSetores"></div>
 		                    <div id="divPaginacao" class="divPaginacao"  align="center"></div>
 	                    </div>
                     </div>
@@ -256,7 +237,7 @@
     
     <script>
         $(function(){
-         	buscaDados();
+            buscaSetores(0);
         });
     </script>
 </html>

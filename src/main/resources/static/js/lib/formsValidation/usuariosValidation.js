@@ -14,13 +14,13 @@ var FormValidation = function () {
                 ignore: true,  // validate all fields including form hidden input
                 
                 rules: {
-                    usuario: {
+                    userName: {
                         required: true
                     },
-		            senha: {
+		            password: {
 		            	required: true
 		            },
-		            confirmarSenha: {
+		            confirmPassword: {
 		            	required: true
 		            }
                 },
@@ -63,7 +63,7 @@ var FormValidation = function () {
             });
             
             //Campo Especial, Tratado individualmente
-            $( "#role" ).rules( "add", {
+            $( "#roleId" ).rules( "add", {
             	required: false
             });
             

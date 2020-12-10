@@ -26,24 +26,27 @@ public class PessoaConverter extends Converter<Pessoa, PessoaRequest, PessoaResp
     }
 
     @Override
+    public PessoaResponse convert(Pessoa pessoa) {
+        return PessoaResponse.builder()
+            .id(pessoa.getId())
+            .name(pessoa.getName())
+            .address(pessoa.getAddress())
+            .birthDate(pessoa.getBirthDate())
+            .email(pessoa.getEmail())
+            .phone(pessoa.getPhone())
+            .build();
+    }
+
+    @Override
     public Page<PessoaResponse> convert(Page<Pessoa> page) {
         List<PessoaResponse> pessoaResponses = convert(page.getContent());
-        return new PageImpl<>(pessoaResponses);
+        return new PageImpl<>(pessoaResponses, page.getPageable(), page.getTotalElements());
     }
 
     @Override
     public List<PessoaResponse> convert(List<Pessoa> list) {
         return list.stream()
-            .map(p -> {
-                PessoaResponse response = new PessoaResponse();
-                response.setId(p.getId());
-                response.setName(p.getName());
-                response.setAddress(p.getAddress());
-                response.setBirthDate(p.getBirthDate());
-                response.setEmail(p.getEmail());
-                response.setPhone(p.getPhone());
-                return response;
-            })
+            .map(this::convert)
             .collect(Collectors.toList());
     }
 }

@@ -21,6 +21,10 @@ public class Usuario {
     private Long id;
     private String name;
     private String password;
+    private Boolean blocked;
+
     @ManyToOne @JoinColumn(name="pessoa_id")
     private Pessoa pessoa;
+    @ManyToOne @JoinColumn(name="role_id")
+    private Role role;
 }

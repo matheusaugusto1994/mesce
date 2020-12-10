@@ -153,26 +153,26 @@
                                             	<div class="row">	
                                             		
                                             		<div class="col-sm-5 campoObrigratorio">
-			                                            <label for="nome">Nome<span class="required"> * </span></label>
+			                                            <label for="name">Nome<span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control" data-required="1" id="nome" name="nome" maxlength="200"/>
+			                                            	<input type="text" class="form-control" data-required="1" id="name" name="name" maxlength="200"/>
                                             			</div>
                                             		</div>
                                             		
                                             		<div class="col-sm-4 campoObrigratorio">
-			                                            <label for="nome">Endereço<span class="required"> * </span></label>
+			                                            <label for="address">Endereço<span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control" data-required="1" id="endereco" name="endereco" maxlength="200"/>
+			                                            	<input type="text" class="form-control" data-required="1" id="address" name="address" maxlength="200"/>
                                             			</div>
                                             		</div>
                                             		
                                             		<div class="col-sm-3 campoObrigratorio">
-			                                            <label for="nome">Telefone<span class="required"> * </span></label>
+			                                            <label for="phone">Telefone<span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control fone" data-required="1" id="telefone" name="telefone" maxlength="200"/>
+			                                            	<input type="text" class="form-control fone" data-required="1" id="phone" name="phone" maxlength="200"/>
                                             			</div>
                                             		</div>
                                             		
@@ -183,27 +183,26 @@
                                             	<div class="row">
                                             	
 													<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="regiao">Região Pastoral <span class="required"> * </span></label>
+			                                            <label for="regiaoId">Região Pastoral <span class="required"> * </span></label>
 		                                            	<div class="input-icon right">
 									                    	<i class="fa"></i>
-			                                            	<select class="form-control select2me" id="regiao" name="regiao[id]" >
+			                                            	<select class="form-control select2me" id="regiaoId" name="regiaoId" >
 			                                            		<option value="">Selecione</option>
-			                                            		<option th:each="regiao : ${regioes}" th:value="${regiao.id}" th:text="${regiao.nome}" />
+			                                            		<option th:each="regiao : ${regioes}" th:value="${regiao.id}" th:text="${regiao.name}" />
 			                                            	</select>
                                             			</div>
                                             		</div>
 
-													<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="regiao">Supervisor <span class="required"> * </span></label>
-		                                            	<div class="input-group select2-bootstrap-prepend">
-				                                            <div class="input-icon right">
-											                	<i class="fa"></i>
-					                                            <select multiple="multiple" id="supervisor" name="supervisor[id]" class="form-control select2 multiSelect" style="width: 100%" >
-					                                                <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.pessoa.nome}" />
-					                                            </select>
-				                                        	</div>
-				                                        </div>
-                                            		</div>
+                                                    <div class="col-sm-6 campoObrigratorio">
+                                                        <label for="userId">Coordenador <span class="required"> * </span></label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <select class="form-control select2me" id="userId" name="userId" >
+                                                                <option value="">Selecione</option>
+                                                                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.pessoa.name}" />
+                                                            </select>
+                                                        </div>
+                                                    </div>
 													
 												</div>
 											</div>
@@ -263,7 +262,7 @@
     
     <script>
         $(function(){
-         	buscaDados();
+            buscaParoquias(0);
         });
     </script>
 </html>

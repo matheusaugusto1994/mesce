@@ -29,14 +29,14 @@ function salvarDados() {
         method: "POST",
         data: JSON.stringify(dataFormJSON),
         contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            toastr.success(data);
-            montaLista(data)
+        success: function(data) {
+            toastr.success("O registro foi salvo com sucesso!");
+            buscaRegioes(0)
             limpaCampos(form);
             abreForm();
         },
-        error: function (data) {
-            toastr.error(data);
+        error: function(data) {
+            toastr.error("Erro ao salvar o registro!");
             abreForm();
         }
     });
@@ -57,27 +57,8 @@ function buscaRegioes(pagina) {
 
 }
 
-function buscaUsuarios() {
-
-    var json = {
-        "pagina": 0,
-        "filtro": ""
-    }
-
-    var request = $.ajax({
-        url: "usuario/list",
-        data: JSON.stringify(json),
-        method: "POST",
-        contentType: 'application/json; charset=utf-8',
-    });
-
-    request.success(function (data) {
-        montaCombo("coordenador", data.dados);
-    });
-}
-
 function montaLista(data) {
-	if(data.content && data.content.length) {
+	if(data && data.content && data.content.length) {
 		let content = data.content
         regioesList = content;
 
@@ -100,7 +81,7 @@ function montaLista(data) {
             '<tbody>';
 
         $.each(content, function (key, value) {
-            var userName = value.userName ? value.userName : '-';
+            var userName = value.user.name ? value.user.name : '-';
 
             regioes += '<tr>' +
                 '<td align="center">' + value.name + '</td>' +
@@ -121,9 +102,9 @@ function montaLista(data) {
             '</div>'
         '</div>';
 
-		if (data.pageable){
-			montaPaginacao(data.totalPages, data.pageable.pageNumber)
-		}
+        if (data.pageable) {
+            montaPaginacao(data.totalPages, data.number)
+        }
     } else {
         regioes = '<div class="alert alert-danger">' +
             'Nenhum Resultado Encontrado.' +
@@ -135,19 +116,7 @@ function montaLista(data) {
     $(".tooltips").tooltip()
 }
 
-function montaCombo(idCombo, dados) {
-    var select = document.getElementById(idCombo);
-
-    $.each(dados, function (i, d) {
-        var element = document.createElement("option");
-        element.textContent = d.usuario;
-        element.value = d.id;
-        select.appendChild(element);
-    });
-}
-
 function carregaCampos(key) {
-
     if (!$("#divCadastro").is(":visible")) {
         abreForm();
     }
@@ -157,25 +126,16 @@ function carregaCampos(key) {
     $.each(data, function (id, valor) {
         $("#" + id).val(valor);
 
-        if (id == "coordenador") {
-            $("#" + id).val(data.userId);
-            $('#select2-' + id + '-container').html(
-                $('#' + id + ' option:selected').text()
+        if (id === "user") {
+            $("#userId").val(data.user.id);
+            $('#select2-userId-container').html(
+                $('#userId option:selected').text()
             );
-//	    	$.each(data.coordenador, function (key, value) {
-//	    		if(key == "id"){
-//	    			$("#" + id).val(value);
-//	    			
-//	    			
-//
-//	    		}
-//	    	});
         }
     });
 }
 
 function deleteRegiao(idRegiao) {
-
     bootbox.confirm({
         title: 'ATENÇÃO!',
         message: 'Deseja Realmente Excluir esta Região ?',
@@ -191,51 +151,30 @@ function deleteRegiao(idRegiao) {
         },
         callback: function (result) {
             if (result) {
-                var json = idRegiao;
-
-                var request = $.ajax({
-                    url: "regiao/delete",
-                    method: "POST",
-                    data: JSON.stringify(json),
+                $.ajax({
+                    url: "regiao/" + idRegiao,
+                    method: "DELETE",
                     contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        toastr.success("Registro excluído com sucesso!");
+                        buscaRegioes(0)
+                    },
+                    error: function (data) {
+                        toastr.error("Erro ao excluir o registro");
+                    }
                 });
-
-                request.success(function (data) {
-                    toastr.success(data);
-                    buscaRegioes(1)
-                });
-
-                request.error(function (data) {
-                    toastr.error(data);
-                })
             }
         }
     });
 
 }
 
-function montaPaginacao(data, pagina) {
-    var paginacao;
-    var paginaAnterior;
-    var proximaPagina;
-    var limite = 10;
-    var totPaginas = parseInt(data) / limite;
-
-    if (Math.round(totPaginas) < totPaginas) {
-        totPaginas = totPaginas + 1;
-        totPaginas = Math.round(totPaginas);
-    } else {
-        totPaginas = Math.round(totPaginas);
-    }
-
-    if (pagina == 0) {
-        pagina = 1;
-    }
-
-    var cont = 1
+function montaPaginacao(totalPaginas, pagina) {
+    let cont = 1;
+    pagina += 1
 
     $('.divPaginacao').bootpag({
-        total: totPaginas,
+        total: totalPaginas,
         page: pagina,
         maxVisible: 5,
         leaps: true,
@@ -249,16 +188,12 @@ function montaPaginacao(data, pagina) {
         prevClass: 'prev',
         lastClass: 'last',
         firstClass: 'first'
-    }).on("page", function (event, num) {
-
-        if (cont > 1) {
+    }).on("page", function(event, num){
+        if(cont > 1)
             return
-        }
-        ;
 
-        buscaRegioes(num);
-        //topPage();
-        cont += 1;
+        buscaRegioes(num -1);
+        cont +=1;
     });
 
 }

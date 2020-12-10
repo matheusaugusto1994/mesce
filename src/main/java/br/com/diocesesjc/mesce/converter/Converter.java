@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 public abstract class Converter<T, REQ extends DtoRequest, RESP extends DtoResponse> {
 
     public abstract T convert(REQ request);
+    public abstract RESP convert(T object);
     public abstract Page<RESP> convert(Page<T> page);
     public abstract List<RESP> convert(List<T> list);
 }

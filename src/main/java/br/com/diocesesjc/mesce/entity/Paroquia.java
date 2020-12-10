@@ -3,6 +3,8 @@ package br.com.diocesesjc.mesce.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +21,14 @@ public class Paroquia {
     @GeneratedValue
     private Long id;
     private String name;
-    private Long userId;
+    private String phone;
+    private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "regiao_id")
+    private Regiao regiao;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Usuario user;
 }

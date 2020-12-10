@@ -56,16 +56,15 @@ function save(){
 		  url: "pessoa",
 		  method: "POST",
 		  data: JSON.stringify(dataFormJSON),
-	      dataType: "json",
 		  contentType: 'application/json',
 		  success: function(data) {
 			  toastr.success("O registro foi salvo com sucesso!");
-			  montaLista(data)
+			  buscaPessoas(0)
 			  abreForm();
 			  waitingDialog.hide();
 		  },
 		  error: function(data) {
-			  toastr.error(data);
+			  toastr.error("Erro ao salvar o registro!");
 			  waitingDialog.hide();
 			  abreForm();
 		  }
@@ -89,7 +88,7 @@ function buscaPessoas(pagina){
 var pessoasList;
 
 function montaLista(data){
-	if(data.content){
+	if(data && data.content){
 		let content = data.content
 
 		pessoasList = content;
@@ -134,7 +133,7 @@ function montaLista(data){
 					'</div>';
 
 		if (data.pageable){
-			montaPaginacao(data.totalPages, data.pageable.pageNumber)
+			montaPaginacao(data.totalPages, data.number)
 		}
 	} else {
 		pessoas = '<div class="alert alert-danger">' +

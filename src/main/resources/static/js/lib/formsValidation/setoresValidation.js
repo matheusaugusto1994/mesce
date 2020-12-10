@@ -3,7 +3,7 @@ var FormValidation = function () {
     // validation using icons
     var ValidationNucleo = function() {
 
-            var form = $('#formNucleos');
+            var form = $('#formSetores');
             var error2 = $('.alert-danger', form);
             var success2 = $('.alert-success', form);
             
@@ -14,7 +14,7 @@ var FormValidation = function () {
                 ignore: true,  // validate all fields including form hidden input
                 
                 rules: {
-                    nome: {
+                    name: {
                         required: true
                     }
                 },
@@ -57,13 +57,11 @@ var FormValidation = function () {
             });
             
             //Campo Especial, Tratado individualmente
-            $( "#coordenador" ).rules( "add", {
+            $( "#userId" ).rules( "add", {
           	  required: true
           	});
-//            $( "#vice" ).rules( "add", {
-//            	required: true
-//            });
-            $( "#pastoral" ).rules( "add", {
+
+            $( "#paroquiaId" ).rules( "add", {
             	required: true
             });
             

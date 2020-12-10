@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usario")
+@RequestMapping("/usuario")
 public class UsuarioController extends CrudController<UsuarioService, UsuarioRequest> {
 
     public UsuarioController(UsuarioService usuarioService) {

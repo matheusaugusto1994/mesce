@@ -23,10 +23,9 @@ public class CrudService<
         this.converter = converter;
     }
 
-    public Page<RESP> save(REQ request) {
+    public void save(REQ request) {
         T object = converter.convert(request);
-        repository.save(object);
-        return get("", 0);
+        repository.saveAndFlush(object);
     }
 
     public Page<RESP> get(String query, Integer page) {

@@ -154,18 +154,18 @@
                                             	<div class="row">
 													
 													<div class="col-sm-6 campoObrigratorio">
-			                                            <label for="pessoa">Pessoa</label>
-		                                            	<select class="form-control select2me" id="pessoa" name="pessoa[id]" >
+			                                            <label for="pessoaId">Pessoa</label>
+		                                            	<select class="form-control select2me" id="pessoaId" name="pessoaId" >
 		                                            		<option value="">Selecione</option>
 		                                            		<option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.name}" />
 		                                            	</select>
                                             		</div>
                                             		
                                             		<div class="col-sm-6 ">
-			                                            <label for="acessoBloqueado">Bloquear Acesso</label>
-		                                            	<select class="form-control select2me" id="acessoBloqueado" name="acessoBloqueado" >
-		                                            		<option value="N" selected="selected">Não</option>
-		                                            		<option value="S">Sim</option>
+			                                            <label for="accessBlocked">Bloquear Acesso</label>
+		                                            	<select class="form-control select2me" id="accessBlocked" name="accessBlocked" >
+		                                            		<option value="false" selected="selected">Não</option>
+		                                            		<option value="true">Sim</option>
 		                                            	</select>
                                             		</div>
                                             		
@@ -175,39 +175,35 @@
 											<div class="form-group">
                                             	<div class="row">		
                                             		<div class="col-sm-3 campoObrigratorio">
-			                                            <label for="nome">Usuário <span class="required"> * </span></label>
+			                                            <label for="name">Usuário <span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control" data-required="1" id="usuario" name="usuario" maxlength="200"/>
+			                                            	<input type="text" class="form-control" data-required="1" id="name" name="name" maxlength="200"/>
                                             			</div>
                                             		</div>
 
                                             		<div class="col-sm-3 campoObrigratorio">
-			                                            <label for="nome">Senha <span class="required"> * </span></label>
+			                                            <label for="password">Senha <span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="password" class="form-control" data-required="1" id="senha" name="senha" maxlength="200"/>
+			                                            	<input type="password" class="form-control" data-required="1" id="password" name="password" maxlength="200"/>
                                             			</div>
                                             		</div>
 
                                             		<div class="col-sm-3 campoObrigratorio">
-			                                            <label for="nome">Confirmar Senha <span class="required"> * </span></label>
+			                                            <label for="confirmPassword">Confirmar Senha <span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
-			                                            	<input type="password" class="form-control" data-required="1" id="confirmarSenha" name="confirmarSenha" maxlength="200"/>
+			                                            	<input type="password" class="form-control" data-required="1" id="confirmPassword" name="confirmPassword" maxlength="200"/>
                                             			</div>
                                             		</div>
 													
 													<div class="col-sm-3 campoObrigratorio">
-				                                        <label for="nivel">Níveis</label>
-				                                        <div class="input-group select2-bootstrap-prepend">
-				                                            <div class="input-icon right">
-											                	<i class="fa"></i>
-					                                            <select multiple="multiple" id="role" name="role[id]" class="form-control select2 multiSelect" >
-				                                            		<option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.role.value}" />
-					                                            </select>
-				                                        	</div>
-				                                        </div>
+				                                        <label for="roleId">Nível</label>
+                                                        <select class="form-control select2me" id="roleId" name="roleId" >
+                                                            <option value="">Selecione</option>
+                                                            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}" />
+                                                        </select>
 				                                    </div>
 <!-- 													<div class="col-sm-3 campoObrigratorio"> -->
 <!-- 			                                            <label for="regiao">Nível <span class="required"> * </span></label> -->
@@ -230,7 +226,7 @@
                                                 <div class="col-md-offset-8 col-md-4" align="right">
                                                 	<input type="hidden" name="id" id="id" />
                                                     <a class="btn blue" onClick="limpaCampos('formUsuarios');">Novo Cadastro</a>
-                                                    <button type="submit" class="btn red" onClick="salvarDados();">Salvar</button>
+                                                    <button type="submit" class="btn red" onClick="save();">Salvar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -248,7 +244,7 @@
 	                    	<div class="col-sm-12" align="right">
 	                    		<div class="input-icon right input-medium margin-top-10">
                                    	<i class="fa fa-search"></i>
-                                      	<input type="text" class="form-control" id="queryBusca" name="queryBusca" onKeyUp="buscaUsuarios('1');" placeholder="Digite Aqui para Pesquisar..."/>
+                                      	<input type="text" class="form-control" id="queryBusca" name="queryBusca" onKeyUp="buscaUsuarios(0);" placeholder="Digite Aqui para Pesquisar..."/>
 								</div>
 	                    	</div>
 	                    </div>
@@ -278,7 +274,7 @@
     
     <script>
         $(function(){
-         	buscaDados();
+            buscaUsuarios(0);
         });
     </script>
 </html>

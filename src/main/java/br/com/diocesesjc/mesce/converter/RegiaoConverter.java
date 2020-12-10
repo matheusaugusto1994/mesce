@@ -1,6 +1,7 @@
 package br.com.diocesesjc.mesce.converter;
 
 import br.com.diocesesjc.mesce.dtos.request.RegiaoRequest;
+import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
 import br.com.diocesesjc.mesce.dtos.response.RegiaoResponse;
 import br.com.diocesesjc.mesce.entity.Regiao;
 import br.com.diocesesjc.mesce.entity.Usuario;
@@ -13,6 +14,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class RegiaoConverter extends Converter<Regiao, RegiaoRequest, RegiaoResponse> {
 
+    private final UsuarioConverter usuarioConverter;
+
+    public RegiaoConverter(UsuarioConverter usuarioConverter) {
+        this.usuarioConverter = usuarioConverter;
+    }
+
     @Override
     public Regiao convert(RegiaoRequest regiaoRequest) {
         return Regiao.builder()
@@ -23,22 +30,31 @@ public class RegiaoConverter extends Converter<Regiao, RegiaoRequest, RegiaoResp
     }
 
     @Override
+    public RegiaoResponse convert(Regiao regiao) {
+        return RegiaoResponse.builder()
+            .id(regiao.getId())
+            .name(regiao.getName())
+            .user(usuarioConverter.toDtoResponse(regiao.getUser()))
+            .build();
+    }
+
+    @Override
     public Page<RegiaoResponse> convert(Page<Regiao> regioes) {
         List<RegiaoResponse> regiaoResponses = convert(regioes.getContent());
-        return new PageImpl<>(regiaoResponses);
+        return new PageImpl<>(regiaoResponses, regioes.getPageable(), regioes.getTotalElements());
     }
 
     @Override
     public List<RegiaoResponse> convert(List<Regiao> list) {
         return list.stream()
-            .map(r -> {
-                RegiaoResponse response = new RegiaoResponse();
-                response.setId(r.getId());
-                response.setName(r.getName());
-                response.setUserId(r.getUser().getId());
-                response.setUserName(r.getUser().getName());
-                return response;
-            })
+            .map(this::convert)
             .collect(Collectors.toList());
+    }
+
+    public DtoResponse toDtoResponse(Regiao regiao) {
+        return DtoResponse.builder()
+            .id(regiao.getId())
+            .name(regiao.getName())
+            .build();
     }
 }

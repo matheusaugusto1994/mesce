@@ -1,7 +1,7 @@
 
 function abreForm(){
 	limpaCampos("formUsuarios");
-	if( $("#divCadastro").attr("style") == "display: none;" ){
+	if( $("#divCadastro").attr("style") === "display: none;" ){
 		$("#divCadastro").show(700);
 		$("#btnNovoCadastro").html("Fechar");
 
@@ -13,101 +13,71 @@ function abreForm(){
 
 }
 
-function salvarDados(){
-	
+function save(){
 	var form = "formUsuarios";
-	var senha = $("#senha").val();
-	var confirmaSenha = $("#confirmarSenha").val();
-	
-	if(senha != confirmaSenha){
+
+	if ($("#password").val() !== $("#confirmPassword").val()){
 		toastr.error("As Senhas Digitadas não Conferem");
 		return;
 	}
-	
-	if( validaCampos(form) == false ){
+
+	if (validaCampos(form) === false){
 		return;
 	}
-	
-	var usuario = $("#" + form).find(':input').filter(function () {
+
+	var dataFormJSON = $("#" + form).find(':input').filter(function () {
           return $.trim(this.value).length > 0
 	}).serializeJSON();
 	
-	var dataFormJSON = new Object();
-	dataFormJSON.usuario = usuario;
-	dataFormJSON.roles = new Array();
-	$.each($("#role").val(), function (key, value) {
-		dataFormJSON.roles.push({"id" : value})		
-	});
-	
 	$.ajax({
-		  url: "usuario/save",
-		  method: "POST",
-		  data: JSON.stringify(dataFormJSON),
-		  contentType: 'application/json; charset=utf-8',
-		  success: function(data) {
-			  
-		  	  var retorno = data.split("|");
-			  
-			  if(retorno[0]=="success"){
-				  toastr.success(retorno[1]);
-				  buscaUsuarios(1);
-				  abreForm();
-			  }else{
-				  toastr.error(retorno[1]);
-			  }
-			  
-		  },
-		  error: function(data) {
-			  toastr.error(data);
-			  abreForm();
-		  }
+		url: "usuario",
+		method: "POST",
+		data: JSON.stringify(dataFormJSON),
+		contentType: 'application/json',
+		success: function(data) {
+		  toastr.success("O registro foi salvo com sucesso!");
+		  buscaUsuarios(0);
+		  abreForm();
+		},
+		error: function(data) {
+		  toastr.error("Erro ao salvar o registro!");
+		  abreForm();
+		}
 	});
 
-}
-
-function buscaDados(){
-	buscaUsuarios(1);
 }
 
 function buscaUsuarios(pagina){
 
 	var queryBusca = $("#queryBusca").val();
-	
-	var json = {
-		"pagina" : pagina,
-		"filtro" : queryBusca
-	}
 
-	var request = $.ajax({
-		  url: "usuario/list",
-		  data: JSON.stringify(json),
-		  method: "POST",
-		  contentType: 'application/json; charset=utf-8',
-	});
-	
-	request.success(function(data) {
-		montaLista(data.dados);
-		montaPaginacao(data.total, data.pagina);
-		usuariosList = data.dados;
+	$.ajax({
+		url: "usuario/" + pagina + "?q=" + queryBusca,
+		method: "GET",
+		contentType: 'application/json; charset=utf-8',
+		success: function(data) {
+			montaLista(data);
+		}
   	});
-	
 }
 
 var usuariosList;
 
 function montaLista(data){
-	if(data.length >0){
-		var obj = data;
+	if(data && data.content){
+		let content = data.content;
+		usuariosList = content;
+
 		var usuarios = '<div class="portlet box blue">' +
 							'<div class="portlet-title">' +
-								'<div class="caption">' + 
-									'<i class="fa fa-picture"></i>Lista de Usuários' + 
-								'</div>' + 
+								'<div class="caption">' +
+									'<i class="fa fa-picture"></i>Lista de Usuários' +
+								'</div>' +
 							'</div>' +
 							'<div class="portlet-body">' +
 								'<div class="table-responsive">' +
-									'<table class="table table-condensed table-hover table-striped">' + 
-										'<thead>' + 
+									'<table class="table table-condensed table-hover table-striped">' +
+										'<thead>' +
 											'<tr>' +
 												'<th><div align="center">Nome</div> </th>' +
 												'<th><div align="center">Usuário</div> </th>' +
@@ -115,45 +85,42 @@ function montaLista(data){
 											'</tr>' +
 										'</thead>'+
 										'<tbody>';
-			$.each(data, function (key, value) {
+
+			$.each(content, function (key, value) {
 					usuarios += 			'<tr>'+
-												'<td align="center">' + ((value.usuario.pessoa == null) ? " - " : value.usuario.pessoa.nome) + '</td>' +
-												'<td align="center">' + value.usuario.usuario + '</td>' +
-												'<td align="center">' + rolesToStringWithComaSeparated(value.roles) +  '</td>' +
-												'<td align="center">' +  
-													'<a style="cursor:pointer;" data-original-title="Editar" class="btn btn-icon-only blue tooltips" onClick="carregaCampos('+ key +');">' + 
-	                                                	'<i class="fa fa-edit"></i>' + 
+												'<td align="center">' + ((value.pessoa == null) ? " - " : value.pessoa.name) + '</td>' +
+												'<td align="center">' + value.name + '</td>' +
+												'<td align="center">' + value.role.name +  '</td>' +
+												'<td align="center">' +
+													'<a style="cursor:pointer;" data-original-title="Editar" class="btn btn-icon-only blue tooltips" onClick="carregaCampos('+ key +');">' +
+	                                                	'<i class="fa fa-edit"></i>' +
 	                                                '</a>' +
-													'<a style="cursor:pointer;" data-original-title="Excluir" class="btn btn-icon-only blue tooltips" onClick="deleteUsuario('+ value.usuario.id +');">' + 
-	                                                	'<i class="fa fa-remove"></i>' + 
+													'<a style="cursor:pointer;" data-original-title="Excluir" class="btn btn-icon-only blue tooltips" onClick="deleteUsuario('+ value.id +');">' +
+	                                                	'<i class="fa fa-remove"></i>' +
 	                                                '</a>' +
 												'</td>' +
 											'</tr>';
-			});						
-				usuarios += 			'</tbody>'+
-									'</table>'+
-								'</div>' + 
-							'</div>'  
-						'</div>';
-		}else{
-			usuarios = '<div class="alert alert-danger">' + 
-		    				'Nenhum Resultado Encontrado.' +
-						   '</div>';
-		}
-		$("#divListaUsuarios").html(usuarios);
-		
-		$(".tooltips").tooltip()                        
-}
+			});
 
-function rolesToStringWithComaSeparated(list) {
-	var result = "";
-	$.each(list, function (key, value) {
-		if (key == 0)
-			result = value.descricao;
-		else
-			result += ', ' + value.descricao;
-	});
-	return result;
+			usuarios += 			    '</tbody>'+
+									'</table>'+
+								'</div>' +
+							'</div>'
+						'</div>';
+
+		if (data.pageable) {
+			montaPaginacao(data.totalPages, data.number)
+		}
+
+	} else {
+		usuarios = '<div class="alert alert-danger">' +
+						'Nenhum Resultado Encontrado.' +
+			       '</div>';
+	}
+
+	$("#divListaUsuarios").html(usuarios);
+
+	$(".tooltips").tooltip()
 }
 
 function carregaCampos(key){
@@ -164,43 +131,38 @@ function carregaCampos(key){
 
 	limpaCampos("formUsuarios");
 
-	var data = usuariosList[key].usuario;
+	let data = usuariosList[key];
+
 	$.each(data, function(id, valor) {
 	    $("#" + id).val(valor);
 	    
-	    if(id == "senha"){
+	    if(id === "password"){
 			$("#" + id).val(valor);
-			$("#confirmarSenha").val(valor);
+			$("#confirmPassword").val(valor);
 	    }
 
-	    if(id == "pessoa"){
-	    	if(data.pessoa == null){
-	    		idPessoa="";
-	    	}else{
-	    		idPessoa = data.pessoa.id;
-	    	}
-			$("#" + id).val(idPessoa);
-			$('#select2-' + id + '-container').html(
-				$( '#' + id + ' option:selected' ).text()
+	    if(id === "pessoa"){
+			$("#pessoaId").val(data.pessoa.id);
+			$('#select2-pessoaId-container').html(
+				$( '#pessoaId option:selected' ).text()
 			);
 	    }
 
-	    if(id == "acessoBloqueado"){
-	    	$("#" + id).val(valor);
-	    	$('#select2-' + id + '-container').html(
-	    			$( '#' + id + ' option:selected' ).text()
+	    if(id === "blocked"){
+	    	$("#blocked").val(valor);
+	    	$('#select2-blocked-container').html(
+	    		$( '#blocked option:selected' ).text()
 	    	);
 	    }
 
+	    if (id === "role") {
+			$("#roleId").val(valor.id);
+			$('#select2-roleId-container').html(
+				$( '#roleId option:selected' ).text()
+			);
+		}
+
 	});
-	
-	var roles = usuariosList[key].roles;
-	var selectedValues = new Array();
-	$.each(roles, function(id, valor) {
-		selectedValues.push(valor.id);
-		$("#role").select2().select2('val',selectedValues);
-	});
-	$(".select2-container").attr('style', 'width: 100%');
 }
 
 function deleteUsuario(idUsuario){
@@ -220,78 +182,49 @@ function deleteUsuario(idUsuario){
 	    },
 	    callback: function(result) {
 	    	if(result){
-	    		var json =  idUsuario;
-	    		
-	    		var request = $.ajax({
-	    			url: "usuario/delete",
-	    			method: "POST",
-	    			data: JSON.stringify(json),
+	    		$.ajax({
+	    			url: "usuario/" + idUsuario,
+	    			method: "DELETE",
 	    			contentType: 'application/json; charset=utf-8',
-	    		});
-	    		
-	    		request.success(function(data) {
-	    			var retorno = data.split("|");
-	    			
-	    			if(retorno[0]=="success"){
-	    				toastr.success(retorno[1]);
-	    				buscaUsuarios(1);
-	    			}else{
-	    				toastr.error(retorno[1]);
-	    			}
-	    		});
-	    		
-	    		request.error(function(data) {
-	    			toastr.error(data);
+					success: function() {
+						toastr.success("Registro excluído com sucesso!");
+						buscaUsuarios(0);
+					},
+					error: function(data) {
+						toastr.error(data);
+					}
 	    		});
 	    	}
-	        
 	    }
 	});
 
 }
 
 
-function montaPaginacao(data,pagina){
-	var paginacao;
-	var paginaAnterior;
-	var proximaPagina;
-	var limite = 10;
-	var totPaginas = parseInt(data)/limite;
-
-	if(Math.round(totPaginas) < totPaginas){
-		totPaginas = totPaginas + 1;
-		totPaginas = Math.round(totPaginas);
-	}else{
-		totPaginas = Math.round(totPaginas);
-	}
-
-	if(pagina == 0){
-		pagina=1;
-	}
-
-	var cont=1
+function montaPaginacao(totalPaginas, pagina){
+	let cont = 1;
+	pagina += 1
 
 	$('.divPaginacao').bootpag({
-	    total: totPaginas,
-	    page: pagina,
-	    maxVisible: 5,
-	    leaps: true,
-	    firstLastUse: true,
-	    first: '←',
-	    last: '→',
-	    wrapClass: 'pagination',
-	    activeClass: 'active',
-	    disabledClass: 'disabled',
-	    nextClass: 'next',
-	    prevClass: 'prev',
-	    lastClass: 'last',
-	    firstClass: 'first'
+		total: totalPaginas,
+		page: pagina,
+		maxVisible: 5,
+		leaps: true,
+		firstLastUse: true,
+		first: '←',
+		last: '→',
+		wrapClass: 'pagination',
+		activeClass: 'active',
+		disabledClass: 'disabled',
+		nextClass: 'next',
+		prevClass: 'prev',
+		lastClass: 'last',
+		firstClass: 'first'
 	}).on("page", function(event, num){
+		if(cont > 1)
+			return
 
-		if(cont > 1){return};
-
-		buscaUsuarios(num);
-		//topPage();
+		buscaUsuarios(num -1);
 		cont +=1;
 	});
 
@@ -329,9 +262,9 @@ function limpaCampos(form){
 		$(this).html('Selecione');
 	});
 	
-	$("#acessoBloqueado").val("N");
-	$('#select2-acessoBloqueado-container').html(
-			$( '#acessoBloqueado option:selected' ).text()
+	$("#accessBlocked").val("false");
+	$('#select2-accessBlocked-container').html(
+			$( '#accessBlocked option:selected' ).text()
 	);
 	
 	$('.campoObrigratorio').each(function () {

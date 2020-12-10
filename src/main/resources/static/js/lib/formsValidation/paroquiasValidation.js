@@ -14,13 +14,13 @@ var FormValidation = function () {
                 ignore: true,  // validate all fields including form hidden input
                 
                 rules: {
-                    nome: {
+                    name: {
                         required: true
                     },
-		            endereco: {
+		            address: {
 		            	required: true
 		            },
-		            telefone: {
+		            phone: {
 		            	required: true
 		            }
                 },
@@ -63,12 +63,13 @@ var FormValidation = function () {
             });
             
             //Campo Especial, Tratado individualmente
-            $( "#regiao" ).rules( "add", {
+            $( "#regiaoId" ).rules( "add", {
           	  required: true
           	});
-//            $( "#supervisor" ).rules( "add", {
-//            	required: true
-//            });
+
+            $( "#userId" ).rules( "add", {
+                required: true
+            });
             
             //apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.
             $('.select2me', form).change(function () {

@@ -1,7 +1,6 @@
 package br.com.diocesesjc.mesce.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,17 +10,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Regiao {
+public class Setor {
 
     @Id
     @GeneratedValue
     private Long id;
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "paroquia_id")
+    private Paroquia paroquia;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario user;
