@@ -22,12 +22,12 @@ commands:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-  test:
-    steps:
-      - checkout
-      - restore_cache_cmd
-      - run: ./mvnw test
-      - save_cache_cmd
+  # test:
+  #   steps:
+  #     - checkout
+  #     - restore_cache_cmd
+  #     - run: ./mvnw test
+  #     - save_cache_cmd
   build:
     steps:
       - checkout
@@ -50,10 +50,10 @@ commands:
 
 
 jobs:
-  test-with-docker:
-    executor: docker-executor
-    steps:
-      - test
+  # test-with-docker:
+  #   executor: docker-executor
+  #   steps:
+  #     - test
   build-with-docker:
     executor: docker-executor
     steps:
@@ -69,9 +69,9 @@ workflows:
   build-then-test-with-docker:
     jobs:
       - build-with-docker
-      - test-with-docker:
-          requires:
-            - build-with-docker
+      # - test-with-docker:
+      #     requires:
+      #       - build-with-docker
       - build-and-push:
           requires:
-            - test-with-docker
+            - build-with-docker
