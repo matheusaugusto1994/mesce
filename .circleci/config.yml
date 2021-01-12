@@ -38,7 +38,9 @@ commands:
     steps:
       - setup_remote_docker
       - checkout
-      - docker/check
+      - docker/check:
+          docker-username: masouza
+          docker-password: $DOCKERHUB_PASSWORD
       - docker/build:
           image: masouza/mesce
       - docker/push:
@@ -58,10 +60,10 @@ jobs:
     executor: docker-executor
     steps:
       - build
-  build-and-push:
-    executor: docker/docker
-    steps:
-        - build-image
+  # build-and-push:
+  #   executor: docker/docker
+  #   steps:
+  #       - build-image
     
 
 
@@ -72,6 +74,6 @@ workflows:
       # - test-with-docker:
       #     requires:
       #       - build-with-docker
-      - build-and-push:
-          requires:
-            - build-with-docker
+      # - build-and-push:
+      #     requires:
+      #       - build-with-docker
