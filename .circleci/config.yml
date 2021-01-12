@@ -1,5 +1,14 @@
 version: 2.1
 
+orbs:
+  docker: circleci/docker@1.5.0
+
+executors:
+ docker-executor:
+   docker:
+     - image: circleci/openjdk:11.0.3-jdk-stretch
+
+
 commands:
   restore_cache_cmd:
     steps:
@@ -25,35 +34,35 @@ commands:
       - restore_cache_cmd
       - run: ./mvnw -Dmaven.test.skip=true package
       - save_cache_cmd
+  build-image:
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - docker/build:
+          image: masouza/mesce
+      - docker/push:
+          digest-path: /tmp/digest.txt
+          image: masouza/mesce
+      - run:
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
 
-executors:
- docker-executor:
-   docker:
-     - image: circleci/openjdk:11.0.3-jdk-stretch
- machine-executor:
-   machine:
-     image: ubuntu-1604:201903-01
 
 jobs:
   test-with-docker:
     executor: docker-executor
     steps:
       - test
-
   build-with-docker:
     executor: docker-executor
     steps:
       - build
-
-  test-with-machine:
-    executor: machine-executor
+  build-and-push:
+    executor: docker/docker
     steps:
-      - test
-
-  build-with-machine:
-    executor: machine-executor
-    steps:
-      - build
+        - build-image
+    
 
 
 workflows:
@@ -63,10 +72,6 @@ workflows:
       - test-with-docker:
           requires:
             - build-with-docker
-
-  build-then-test-with-machine:
-    jobs:
-      - build-with-machine
-      - test-with-machine:
+      - build-and-push:
           requires:
-            - build-with-machine
+            - test-with-docker
