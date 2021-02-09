@@ -1,6 +1,6 @@
 package br.com.diocesesjc.mesce.service;
 
-import br.com.diocesesjc.mesce.converter.Converter;
+import br.com.diocesesjc.mesce.converter.data.Converter;
 import br.com.diocesesjc.mesce.dtos.request.DtoRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
 import br.com.diocesesjc.mesce.repository.DataQueryFilteredRepository;
@@ -40,6 +40,10 @@ public class CrudService<
     public List<RESP> getAll() {
         List<T> objects = (List<T>) repository.findAll();
         return converter.convert(objects);
+    }
+
+    public long count() {
+        return repository.count();
     }
 
 }

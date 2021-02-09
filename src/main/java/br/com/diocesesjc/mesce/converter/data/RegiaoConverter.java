@@ -1,4 +1,4 @@
-package br.com.diocesesjc.mesce.converter;
+package br.com.diocesesjc.mesce.converter.data;
 
 import br.com.diocesesjc.mesce.dtos.request.RegiaoRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegiaoConverter extends Converter<Regiao, RegiaoRequest, RegiaoResponse> {
+public class RegiaoConverter implements Converter<Regiao, RegiaoRequest, RegiaoResponse> {
 
     private final UsuarioConverter usuarioConverter;
 

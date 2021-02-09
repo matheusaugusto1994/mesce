@@ -1,6 +1,6 @@
 package br.com.diocesesjc.mesce.service;
 
-import br.com.diocesesjc.mesce.converter.RoleConverter;
+import br.com.diocesesjc.mesce.converter.data.RoleConverter;
 import br.com.diocesesjc.mesce.dtos.request.DtoRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
 import br.com.diocesesjc.mesce.entity.Role;

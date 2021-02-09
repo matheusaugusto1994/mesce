@@ -1,6 +1,6 @@
 package br.com.diocesesjc.mesce.service;
 
-import br.com.diocesesjc.mesce.converter.UsuarioConverter;
+import br.com.diocesesjc.mesce.converter.data.UsuarioConverter;
 import br.com.diocesesjc.mesce.dtos.request.UsuarioRequest;
 import br.com.diocesesjc.mesce.dtos.response.UsuarioResponse;
 import br.com.diocesesjc.mesce.entity.Usuario;

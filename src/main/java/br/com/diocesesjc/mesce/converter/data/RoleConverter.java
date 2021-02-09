@@ -1,4 +1,4 @@
-package br.com.diocesesjc.mesce.converter;
+package br.com.diocesesjc.mesce.converter.data;
 
 import br.com.diocesesjc.mesce.dtos.request.DtoRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoleConverter extends Converter<Role, DtoRequest, DtoResponse> {
+public class RoleConverter implements Converter<Role, DtoRequest, DtoResponse> {
 
     @Override
     public Role convert(DtoRequest request) {

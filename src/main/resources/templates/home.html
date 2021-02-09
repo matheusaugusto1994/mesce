@@ -24,6 +24,7 @@
 	<link href="/js/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
 	<link href="/css/login.css" rel="stylesheet" type="text/css" />
 	<link href="/css/profile.css" rel="stylesheet" type="text/css" />
+	<link href="/css/index.css" rel="stylesheet" type="text/css" />
 	<!-- END PAGE LEVEL PLUGINS -->
 
 	<!-- BEGIN THEME GLOBAL STYLES -->
@@ -109,8 +110,8 @@
 						<!-- BEGIN DASHBOARD STATS 1-->
 	                    <div class="row">
 	                    	
-	                        <div class=" col-lg-2 col-md-2 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('regioes');">
+	                        <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totRegioes');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
@@ -121,8 +122,8 @@
 	                                </div>
 	                            </a>
 	                        </div>
-	                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('paroquias');">
+	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totParoquias');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
@@ -133,48 +134,26 @@
 	                                </div>
 	                            </a>
 	                        </div>
-	                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('pastorais');" >
+	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totSetores');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
 	                                    <div class="number">
-	                                        <span id="totPastorais" data-counter="counterup" data-value="125">0</span> </div>
-	                                    <div class="desc"> Pastorais </div>
-	                                </div>
-	                            </a>
-	                        </div>
-	                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('nucleos');">
-	                                <div class="visual">
-	                                </div>
-	                                <div class="details">
-	                                    <div class="number">
-	                                        <span id="totNucleos" data-counter="counterup" data-value="549">0</span>
+	                                        <span id="totSetores" data-counter="counterup" data-value="549">0</span>
 	                                    </div>
-	                                    <div class="desc"> Núcleos </div>
+	                                    <div class="desc"> Setores </div>
 	                                </div>
 	                            </a>
 	                        </div>
-	                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('pessoas');">
+	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totPessoas');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
 	                                    <div class="number">
 	                                        <span id="totPessoas" data-counter="counterup" data-value="89"></span></div>
 	                                    <div class="desc"> Pessoas </div>
-	                                </div>
-	                            </a>
-	                        </div>
-	                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('usuarios');">
-	                                <div class="visual">
-	                                </div>
-	                                <div class="details">
-	                                    <div class="number">
-	                                        <span id="totUsuarios" data-counter="counterup" data-value="89"></span></div>
-	                                    <div class="desc"> Usuários </div>
 	                                </div>
 	                            </a>
 	                        </div>
@@ -193,51 +172,50 @@
 						</div>
 						<div id="detalhesRelatorio" style="margin-top: 20px"></div>
 					</div>
-					
+
+					<div id="brasao" class="index-body-wrapper-imgs">
+						<div>
+							<img alt="" class="index-body-img" th:src="@{/img/diocese.png}" />
+						</div>
+					</div>
+
                 </div>
                 <!-- END CONTENT BODY -->
             </div>
             <!-- END CONTENT -->
-            
         </div>
         <!-- END CONTAINER -->
 		
 		
 		<!-- Modal -->
-		  <div class="modal fade" id="myModal" role="dialog" >
-		    <div class="modal-dialog" style="width: 80%;">
-		    
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-		          <h4 class="modal-title">Termo de Voluntariado</h4>
-		        </div>
-		        <div id="divTermo" class="modal-body" style="overflow: scroll; height: 450px; overflow-x: hidden;">
-		          <p><span id="spanTermo"></span></p>
-		        </div>
-		        <div class="modal-footer">
-		          <button id="btnAceitarTermo" type="button" class="btn btn-primary" data-dismiss="modal" onClick="aceitarTermo();" >Aceitar Termo</button>
-		        </div>
-		      </div>
-		      
-		    </div>
-		  </div>
-				
-		
-		
+		<div class="modal fade" id="myModal" role="dialog" >
+			<div class="modal-dialog" style="width: 80%;">
+
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+				  <h4 class="modal-title">Termo de Voluntariado</h4>
+				</div>
+				<div id="divTermo" class="modal-body" style="overflow: scroll; height: 450px; overflow-x: hidden;">
+				  <p><span id="spanTermo"></span></p>
+				</div>
+				<div class="modal-footer">
+				  <button id="btnAceitarTermo" type="button" class="btn btn-primary" data-dismiss="modal" onClick="aceitarTermo();" >Aceitar Termo</button>
+				</div>
+			  </div>
+
+			</div>
+		</div>
 		
 		<!-- Footer -->
        <div th:replace="fragments/rodape :: footer">&nbsp;</div>
 		
 	</body>
-	
-	
-	
+
 	<script>
-		
 		$(function(){
-			// buscaRegioesETotais();
+			buscaContadores();
 		})
 	</script>
 </html>

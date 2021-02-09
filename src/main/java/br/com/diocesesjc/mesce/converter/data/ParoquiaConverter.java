@@ -1,4 +1,4 @@
-package br.com.diocesesjc.mesce.converter;
+package br.com.diocesesjc.mesce.converter.data;
 
 import br.com.diocesesjc.mesce.dtos.request.ParoquiaRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
@@ -13,7 +13,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ParoquiaConverter extends Converter<Paroquia, ParoquiaRequest, ParoquiaResponse> {
+public class ParoquiaConverter implements Converter<Paroquia, ParoquiaRequest, ParoquiaResponse> {
 
     private final RegiaoConverter regiaoConverter;
     private final UsuarioConverter usuarioConverter;

@@ -1,4 +1,4 @@
-package br.com.diocesesjc.mesce.converter;
+package br.com.diocesesjc.mesce.converter.data;
 
 import br.com.diocesesjc.mesce.dtos.request.UsuarioRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
@@ -10,11 +10,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UsuarioConverter extends Converter<Usuario, UsuarioRequest, UsuarioResponse> {
+public class UsuarioConverter implements Converter<Usuario, UsuarioRequest, UsuarioResponse> {
 
     private final PessoaConverter pessoaConverter;
     private final RoleConverter roleConverter;

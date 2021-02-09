@@ -1,4 +1,4 @@
-package br.com.diocesesjc.mesce.converter;
+package br.com.diocesesjc.mesce.converter.data;
 
 import br.com.diocesesjc.mesce.dtos.request.SetorRequest;
 import br.com.diocesesjc.mesce.dtos.response.SetorResponse;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SetorConverter extends Converter<Setor, SetorRequest, SetorResponse> {
+public class SetorConverter implements Converter<Setor, SetorRequest, SetorResponse> {
 
     private final UsuarioConverter usuarioConverter;
     private final ParoquiaConverter paroquiaConverter;

@@ -1,6 +1,6 @@
 package br.com.diocesesjc.mesce.service;
 
-import br.com.diocesesjc.mesce.converter.ParoquiaConverter;
+import br.com.diocesesjc.mesce.converter.data.ParoquiaConverter;
 import br.com.diocesesjc.mesce.dtos.request.ParoquiaRequest;
 import br.com.diocesesjc.mesce.dtos.response.ParoquiaResponse;
 import br.com.diocesesjc.mesce.entity.Paroquia;

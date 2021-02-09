@@ -1,4 +1,4 @@
-package br.com.diocesesjc.mesce.converter;
+package br.com.diocesesjc.mesce.converter.data;
 
 import br.com.diocesesjc.mesce.dtos.request.PessoaRequest;
 import br.com.diocesesjc.mesce.dtos.response.PessoaResponse;
@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PessoaConverter extends Converter<Pessoa, PessoaRequest, PessoaResponse> {
+public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaResponse> {
 
     @Override
     public Pessoa convert(PessoaRequest pessoaRequest) {

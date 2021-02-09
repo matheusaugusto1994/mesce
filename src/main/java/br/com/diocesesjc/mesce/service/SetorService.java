@@ -1,6 +1,6 @@
 package br.com.diocesesjc.mesce.service;
 
-import br.com.diocesesjc.mesce.converter.SetorConverter;
+import br.com.diocesesjc.mesce.converter.data.SetorConverter;
 import br.com.diocesesjc.mesce.dtos.request.SetorRequest;
 import br.com.diocesesjc.mesce.dtos.response.SetorResponse;
 import br.com.diocesesjc.mesce.entity.Setor;
