@@ -1,8 +1,10 @@
 package br.com.diocesesjc.mesce.service;
 
+import br.com.diocesesjc.mesce.entity.Pessoa;
 import br.com.diocesesjc.mesce.entity.Role;
 import br.com.diocesesjc.mesce.entity.Usuario;
 import br.com.diocesesjc.mesce.enums.RoleType;
+import br.com.diocesesjc.mesce.repository.PessoaRepository;
 import br.com.diocesesjc.mesce.repository.RoleRepository;
 import br.com.diocesesjc.mesce.repository.UsuarioRepository;
 import com.google.common.collect.Lists;
@@ -16,10 +18,12 @@ public class InitialDataService {
 
     private final RoleRepository roleRepository;
     private final UsuarioRepository usuarioRepository;
+    private final PessoaRepository pessoaRepository;
 
-    public InitialDataService(RoleRepository roleRepository, UsuarioRepository usuarioRepository) {
+    public InitialDataService(RoleRepository roleRepository, UsuarioRepository usuarioRepository, PessoaRepository pessoaRepository) {
         this.roleRepository = roleRepository;
         this.usuarioRepository = usuarioRepository;
+        this.pessoaRepository = pessoaRepository;
     }
 
     public void createInitialData() {
@@ -29,13 +33,26 @@ public class InitialDataService {
 
     private void createFirstUser() {
         if (usuarioRepository.count() == 0) {
+            Pessoa pessoa = createFirstPessoa();
             Usuario usuario = Usuario.builder()
                 .name("master")
                 .password(new BCryptPasswordEncoder(11).encode("123"))
+                .pessoa(pessoa)
                 .build();
 
             usuarioRepository.save(usuario);
         }
+    }
+
+    private Pessoa createFirstPessoa() {
+        if (pessoaRepository.count() == 0) {
+            Pessoa pessoa = Pessoa.builder()
+                .name("Administrador")
+                .build();
+
+            return pessoaRepository.save(pessoa);
+        }
+        return null;
     }
 
     private void createRoles() {

@@ -61,7 +61,7 @@ var setoresList;
 
 function montaLista(data){
 	let setores
-	if(data && data.content) {
+	if(data && data.content && data.content.length) {
 		let content = data.content
 		setoresList = content
 

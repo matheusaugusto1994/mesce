@@ -113,8 +113,8 @@ function montaLista(data){
 			$.each(content, function (key, value) {
 					pessoas += 			'<tr>'+
 												'<td align="center">' + value.name + '</td>' +
-												'<td align="center">' + value.phone + '</td>' +
-												'<td align="center">' + value.email +  '</td>' +
+												'<td align="center">' + (value.phone ? value.phone : '-') + '</td>' +
+												'<td align="center">' + (value.email ? value.email : '-') +  '</td>' +
 												'<td align="center">' +
 													'<a style="cursor:pointer;" data-original-title="Editar" class="btn btn-icon-only blue tooltips" onClick="carregaCampos('+ key +');">' + 
 	                                                	'<i class="fa fa-edit"></i>' + 

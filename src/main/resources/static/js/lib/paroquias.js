@@ -62,7 +62,7 @@ var paroquiasList;
 
 function montaLista(data){
 	let paroquias;
-	if(data && data.content){
+	if(data && data.content && data.content.length){
 		let content = data.content
 		paroquiasList = content
 
