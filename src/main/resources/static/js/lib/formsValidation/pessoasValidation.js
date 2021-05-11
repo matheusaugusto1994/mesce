@@ -66,9 +66,9 @@ var FormValidation = function () {
             });
             
             //Campo Especial, Tratado individualmente
-            $( "#birthDate" ).rules( "add", {
-            	required: true
-            });
+//            $( "#birthDate" ).rules( "add", {
+//            	required: false
+//            });
 //            $( "#dtReciclagem" ).rules( "add", {
 //            	required: true
 //            });
