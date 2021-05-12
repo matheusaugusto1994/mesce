@@ -10,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class PessoaResponse extends DtoResponse {
     private String address;
-    private LocalDate birthDate;
     private String email;
     private String phone;
 }

@@ -19,7 +19,6 @@ public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaR
             .id(pessoaRequest.getId())
             .name(pessoaRequest.getName())
             .address(pessoaRequest.getAddress())
-            .birthDate(LocalDate.parse(pessoaRequest.getBirthDate()))
             .phone(pessoaRequest.getPhone())
             .email(pessoaRequest.getEmail())
             .build();
@@ -31,7 +30,6 @@ public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaR
             .id(pessoa.getId())
             .name(pessoa.getName())
             .address(pessoa.getAddress())
-            .birthDate(pessoa.getBirthDate())
             .email(pessoa.getEmail())
             .phone(pessoa.getPhone())
             .build();

@@ -20,7 +20,7 @@ public class ViewGroupService {
             Screen.builder().name("Paróquias").url("/paroquias").build(),
             Screen.builder().name("Pessoas").url("/pessoas").build(),
             Screen.builder().name("Setores").url("/setores").build(),
-            Screen.builder().name("Regiões").url("/regioes").build(),
+            Screen.builder().name("Região Pastoral").url("/regioes").build(),
             Screen.builder().name("Usuarios").url("/usuarios").build()
         );
     }

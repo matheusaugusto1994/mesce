@@ -203,9 +203,6 @@ function carregaCampos(key){
 			);
 	    }
 
-		if(id === "birthDate"){
-			$("#" + id).val(formataDataPTBR(valor));
-		}
 
 	});
 }
