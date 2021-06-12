@@ -13,8 +13,6 @@ function abreForm(){
 
 }
 
-
-
 function formataDataEn(data){
 
 	var dataSplit = data.split("/");
@@ -23,17 +21,16 @@ function formataDataEn(data){
 	return dataEn;
 }
 
-
 function save(){
-	var form = "formPessoas";
+	let form = "formPessoas";
 
-	if( validaCampos(form) == false ){
+	if( validaCampos(form) === false ){
 		return;
 	}
 
-	// var fotoData = $("#fotoData").val();
+	waitingDialog.show('Salvando Informações');
 
-	var dataFormJSON = $("#" + form).find(':input').filter(function () {
+	let dataFormJSON = $("#" + form).find(':input').filter(function () {
           return $.trim(this.value).length > 0
 	}).serializeJSON(
 			{
@@ -45,13 +42,6 @@ function save(){
 			}
 	);
 
-	// var formData = new FormData();
-	// formData.append('fotoData', fotoData);
-	// formData.append('jsonForm', JSON.stringify(dataFormJSON));
-
-    waitingDialog.show('Salvando Informações');
-    
-    
     $.ajax({
 		  url: "pessoa",
 		  method: "POST",
@@ -180,7 +170,7 @@ function carregaCampos(key){
 	$.each(data, function(id, valor) {
 	    $("#" + id).val(valor);
 
-	    if(id == "fotoPath"){
+	    if(id == "photoPath"){
 	    	if(valor == null){
 	    		$('#divFileInput').removeClass('fileinput-exists');
 	    		$('#divFileInput').addClass('fileinput-new');
@@ -188,7 +178,8 @@ function carregaCampos(key){
 	    		$('#divFileInput').removeClass('fileinput-new');
 	    		$('#divFileInput').addClass('fileinput-exists');
 		    	$('#divFilePreview').html('<img id="imgPessoa" style="max-height: 300px;">');
-		    	carregaImagem(valor);
+
+		    	carregaImagem(data.id);
 	    	}
 	    }
 
@@ -207,10 +198,10 @@ function carregaCampos(key){
 	});
 }
 
-function carregaImagem(path){
+function carregaImagem(id){
 	$.ajax({
         type : 'GET',
-        url : 'pessoa/listImage?path=' + path,
+        url : 'pessoa/' + id + '/photo',
         success : function(response) {
         	document.getElementById("imgPessoa").src = response;
         },
@@ -337,17 +328,13 @@ function clear(form){
 }
 
 function upload(){
-	//alert("up")
-
 	$('#divFilePreview').html("");
-	//$uploadCrop.destroy()
 
-	var $uploadCrop ;
+	let $uploadCrop;
 
 	function readFile(input) {
-
 		if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            let reader = new FileReader();
 
             reader.onload = function (e) {
             	$uploadCrop.croppie('bind', {
@@ -358,11 +345,9 @@ function upload(){
 
             reader.readAsDataURL(input.files[0]);
 			return true;
-		}else {
-	        //alert("Sorry - you're browser doesn't support the FileReader API");
-	    }
-
+		}
 	}
+
 	$uploadCrop = $('#divFilePreview').croppie({
 		url: '../../img/profile.jpg' ,
 		viewport: {
@@ -379,7 +364,7 @@ function upload(){
 
     getResultFoto();
 
-	$('#fotoPessoa').on('change', function () { readFile(this); });
+	$('#photoPessoa').on('change', function () { readFile(this); });
 
 	$('#divFilePreview').mouseup(function() {
 		getResultFoto();
@@ -392,15 +377,15 @@ function upload(){
 
 	function getResultFoto(){
 
-		if ($('#fotoPessoa').val() != "") {
+		if ($('#photoPessoa').val() != "") {
 			$uploadCrop.croppie('result', {
 				type: 'canvas',
 				size: 'viewport'
 			}).then(function (resp) {
-				$("#fotoData").val(resp);
+				$("#photoData").val(resp);
 			});
 		}else{
-			$('#fotoData').val('');
+			$('#photoData').val('');
 		}
 
 	}

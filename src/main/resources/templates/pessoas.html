@@ -151,7 +151,7 @@
 		                                        	<div class="col-sm-12" align="center">
 			                                            <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-0 col-xs-6" >
 			                                                <div class="mt-card-item" style="border-style:none; max-width: 300px;">
-												                                            <div id="divFileInput" class="fileinput fileinput-new" data-provides="fileinput">
+                                                                <div id="divFileInput" class="fileinput fileinput-new" data-provides="fileinput">
                                                                     <div id="divFilePreview" class="" style="padding-left:10px;padding-right:10px;">
                                                                     	<img th:src="@{/img/profile.jpg}" style="max-width: 240px;" />
                                                                     </div>
@@ -161,11 +161,11 @@
                                                                         <span class="btn default btn-file" onclick="upload()">
                                                                             <span class="fileinput-new"> Escolha uma Imagem </span>
                                                                             <span class="fileinput-exists" id="spanAlterar" > Alterar </span>
-                                                                            <input type="file" name="fotoPessoa" id="fotoPessoa" accept="image/png, image/jpeg" />
+                                                                            <input type="file" name="photoPessoa" id="photoPessoa" accept="image/png, image/jpeg" />
                                                                         </span>
-                                                                            <input type="hidden" name="fotoPath" id="fotoPath"/>
-                                                                            <input type="hidden" name="fotoData" id="fotoData"/>
-                                                                        	<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput" onclick="$('#fotoPath').val('');upload();"> Remover </a>
+                                                                            <input type="hidden" name="photoPath" id="photoPath"/>
+                                                                            <input type="hidden" name="photoData" id="photoData"/>
+                                                                        	<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput" onclick="$('#photoPath').val('');upload();"> Remover </a>
                                                                     </div>
 	                                                    		</div>
 

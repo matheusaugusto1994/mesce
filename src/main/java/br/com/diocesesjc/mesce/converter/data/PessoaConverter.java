@@ -1,9 +1,10 @@
 package br.com.diocesesjc.mesce.converter.data;
 
+import static br.com.diocesesjc.mesce.utils.FileManager.convertToFile;
+
 import br.com.diocesesjc.mesce.dtos.request.PessoaRequest;
 import br.com.diocesesjc.mesce.dtos.response.PessoaResponse;
 import br.com.diocesesjc.mesce.entity.Pessoa;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaR
             .address(pessoaRequest.getAddress())
             .phone(pessoaRequest.getPhone())
             .email(pessoaRequest.getEmail())
+            .photoPath(convertToFile(pessoaRequest.getPhotoData()))
             .build();
     }
 
@@ -32,6 +34,7 @@ public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaR
             .address(pessoa.getAddress())
             .email(pessoa.getEmail())
             .phone(pessoa.getPhone())
+            .photoPath(pessoa.getPhotoPath())
             .build();
     }
 
