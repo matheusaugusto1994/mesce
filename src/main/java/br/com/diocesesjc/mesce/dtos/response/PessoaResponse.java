@@ -12,5 +12,5 @@ public class PessoaResponse extends DtoResponse {
     private String address;
     private String email;
     private String phone;
-    private String whatsapp;
+    private String whatsApp;
 }
