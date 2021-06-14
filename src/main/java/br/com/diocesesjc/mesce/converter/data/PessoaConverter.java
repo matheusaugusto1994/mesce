@@ -21,6 +21,7 @@ public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaR
             .address(pessoaRequest.getAddress())
             .phone(pessoaRequest.getPhone())
             .email(pessoaRequest.getEmail())
+            .whatsApp(pessoaRequest.getWhatsApp())
             .build();
     }
 
@@ -32,6 +33,7 @@ public class PessoaConverter implements Converter<Pessoa, PessoaRequest, PessoaR
             .address(pessoa.getAddress())
             .email(pessoa.getEmail())
             .phone(pessoa.getPhone())
+            .whatsApp(pessoa.getWhatsApp())
             .build();
     }
 
