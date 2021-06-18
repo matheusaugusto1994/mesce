@@ -9,7 +9,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/paroquia")
 public class ParoquiaController extends CrudController<ParoquiaService, ParoquiaRequest> {
 
-    public ParoquiaController(ParoquiaService paroquiaService) {
-        super(paroquiaService);
-    }
+    public ParoquiaController(ParoquiaService paroquiaService) { super(paroquiaService); }
 }

@@ -8,7 +8,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 public class ParoquiaResponse extends DtoResponse {
+    private Long cep;
     private String address;
+    private String numberAddress;
     private String phone;
     private DtoResponse regiao;
     private DtoResponse user;

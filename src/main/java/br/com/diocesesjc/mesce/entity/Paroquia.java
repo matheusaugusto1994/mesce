@@ -21,8 +21,10 @@ public class Paroquia {
     @GeneratedValue
     private Long id;
     private String name;
+    private Long cep;
     private String phone;
     private String address;
+    private String numberAddress;
 
     @ManyToOne
     @JoinColumn(name = "regiao_id")
