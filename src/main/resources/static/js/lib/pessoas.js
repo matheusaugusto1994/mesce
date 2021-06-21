@@ -95,6 +95,7 @@ function montaLista(data){
 											'<tr>' +
 												'<th><div align="center">Nome</div> </th>' +
 												'<th><div align="center">Telefone</div> </th>' +
+												'<th><div align="center">WhatsApp</div> </th>' +
 												'<th><div align="center">Email</div> </th>' +
 											'</tr>' +
 										'</thead>'+
@@ -104,6 +105,7 @@ function montaLista(data){
 					pessoas += 			'<tr>'+
 												'<td align="center">' + value.name + '</td>' +
 												'<td align="center">' + (value.phone ? value.phone : '-') + '</td>' +
+												'<td align="center">' + (value.whatsapp ? value.whatsapp : '-') + '</td>' +
 												'<td align="center">' + (value.email ? value.email : '-') +  '</td>' +
 												'<td align="center">' +
 													'<a style="cursor:pointer;" data-original-title="Editar" class="btn btn-icon-only blue tooltips" onClick="carregaCampos('+ key +');">' + 

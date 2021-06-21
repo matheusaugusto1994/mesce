@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class PessoaService extends
     CrudService<Pessoa, PessoaRepository, PessoaConverter, PessoaRequest, PessoaResponse> {
 
-    PessoaRepository pessoaRepository;
+    private final PessoaRepository pessoaRepository;
 
     public PessoaService(PessoaConverter pessoaConverter, PessoaRepository pessoaRepository) {
         super(pessoaRepository, pessoaConverter);

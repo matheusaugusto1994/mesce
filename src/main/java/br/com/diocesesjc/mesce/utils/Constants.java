@@ -9,4 +9,5 @@ public class Constants {
 
     public static final String PHOTO_PATH = System.getProperty("user.dir") + "/filesMesce/";
     public static final String BASE_64_PREFIX = "data:image/png;base64,";
+    public static final String FILE_EXTENSION = ".jpg";
 }

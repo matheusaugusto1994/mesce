@@ -1,6 +1,7 @@
 package br.com.diocesesjc.mesce.utils;
 
 import static br.com.diocesesjc.mesce.utils.Constants.BASE_64_PREFIX;
+import static br.com.diocesesjc.mesce.utils.Constants.FILE_EXTENSION;
 import static br.com.diocesesjc.mesce.utils.Constants.PHOTO_PATH;
 
 import java.io.File;
@@ -16,7 +17,7 @@ public class FileManager {
     public static String convertToFile(String file) {
         if (Strings.isNotBlank(file)) {
             String base64File = file.replace(BASE_64_PREFIX, Strings.EMPTY);
-            String fullPathFile = PHOTO_PATH + UUID.randomUUID() + ".jpg";
+            String fullPathFile = PHOTO_PATH + UUID.randomUUID() + FILE_EXTENSION;
 
             byte[] data = Base64.getDecoder().decode(base64File);
             FileUtils.writeByteArrayToFile(new File(fullPathFile), data);
