@@ -22,5 +22,6 @@ public class Pessoa {
     private String address;
     private String email;
     private String phone;
+    private String photoPath;
     private String whatsApp;
 }
