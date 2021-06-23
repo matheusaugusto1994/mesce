@@ -259,3 +259,16 @@ function limpaCampos(form){
 	$("#" + form + " .alert-danger").hide();
 }
 
+$(function($){
+	$("#cep").change(function(){
+		$.ajax({
+			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+			dataType: 'json',
+			success: function(resposta){
+				$("#address").val(resposta.logradouro+ ', ' + resposta.bairro + ' - ' + resposta.localidade + ' - ' + resposta.uf);
+			}
+		});
+	});
+});
+
+
