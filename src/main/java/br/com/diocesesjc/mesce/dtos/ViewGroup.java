@@ -10,5 +10,5 @@ import lombok.Data;
 public class ViewGroup {
     private String name;
     private String icon;
-    private List<Screen> views = Lists.newArrayList();
+    private List<ViewScreen> views = Lists.newArrayList();
 }
