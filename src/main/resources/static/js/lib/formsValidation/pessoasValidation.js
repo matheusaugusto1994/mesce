@@ -17,8 +17,14 @@ var FormValidation = function () {
                     name: {
                         required: true
                     },
+                    cep: {
+                        required: true
+                    },
 		            address: {
 		            	required: true
+		            },
+		            numberAddress: {
+                        required: true
 		            },
 		            phone: {
 		            	required: true
@@ -26,6 +32,7 @@ var FormValidation = function () {
 		            email: {
 		            	required: true
 		            }
+
                 },
 
                 invalidHandler: function (event, validator) { //display error alert on form submit              

@@ -21,6 +21,7 @@ public class Pessoa {
     private Long id;
     private String name;
     private String address;
+    private String numberAddress;
     private String email;
     private String phone;
     private String whatsApp;
