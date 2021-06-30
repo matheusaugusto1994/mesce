@@ -33,14 +33,5 @@ public class ViewGroupService {
         return roles.stream()
             .map(rs -> ViewScreen.builder().name(rs.getScreenType().getDescription()).url(rs.getScreenType().getPathUrl()).build())
             .collect(Collectors.toList());
-
-
-//            Lists.newArrayList(
-//            ViewScreen.builder().name("Pessoas").url("/pessoas").build(),
-//            ViewScreen.builder().name("Usuarios").url("/usuarios").build(),
-//            ViewScreen.builder().name("Região Pastoral").url("/regioes").build(),
-//            ViewScreen.builder().name("Paróquias").url("/paroquias").build(),
-//            ViewScreen.builder().name("Setores").url("/setores").build()
-//        );
     }
 }
