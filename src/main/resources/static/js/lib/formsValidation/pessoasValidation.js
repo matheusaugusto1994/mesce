@@ -32,7 +32,6 @@ var FormValidation = function () {
 		            email: {
 		            	required: true
 		            }
-
                 },
 
                 invalidHandler: function (event, validator) { //display error alert on form submit              
