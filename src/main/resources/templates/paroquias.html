@@ -81,6 +81,8 @@
      <script src="/js/scripts/jquery.bootpag.min.js"></script>
 	 <script src="/js/lib/paroquias.js"></script>
 	 <script src="/js/lib/trocaSenha.js" type="text/javascript"></script>
+
+
 	
 </head>
 <!--     <span th:inline="text">[[${#httpServletRequest.remoteUser}]]</span> -->
@@ -152,31 +154,50 @@
 											<div class="form-group">
                                             	<div class="row">	
                                             		
-                                            		<div class="col-sm-5 campoObrigratorio">
+                                            		<div class="col-sm-8 campoObrigratorio">
 			                                            <label for="name">Nome<span class="required"> * </span></label>
 			                                            <div class="input-icon right">
 			                                            	<i class="fa"></i>
 			                                            	<input type="text" class="form-control" data-required="1" id="name" name="name" maxlength="200"/>
                                             			</div>
                                             		</div>
-                                            		
-                                            		<div class="col-sm-4 campoObrigratorio">
-			                                            <label for="address">Endereço<span class="required"> * </span></label>
-			                                            <div class="input-icon right">
-			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control" data-required="1" id="address" name="address" maxlength="200"/>
-                                            			</div>
-                                            		</div>
-                                            		
-                                            		<div class="col-sm-3 campoObrigratorio">
-			                                            <label for="phone">Telefone<span class="required"> * </span></label>
-			                                            <div class="input-icon right">
-			                                            	<i class="fa"></i>
-			                                            	<input type="text" class="form-control fone" data-required="1" id="phone" name="phone" maxlength="200"/>
-                                            			</div>
-                                            		</div>
-                                            		
-												</div>
+
+                                                    <div class="col-sm-4 campoObrigratorio">
+                                                        <label for="phone">Telefone<span class="required"> * </span></label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control fone" data-required="1" id="phone" name="phone" maxlength="200"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-2 campoObrigratorio">
+                                                        <label for="cep">CEP<span class="required"> * </span></label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" data-required="1" id="cep" name="cep" maxlength="200"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-8 campoObrigratorio">
+                                                        <label for="address">Endereço<span class="required"> * </span></label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" data-required="1" id="address" name="address" maxlength="200"/>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-2 campoObrigratorio">
+                                                        <label for="numberAddress">Número<span class="required"> * </span></label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" data-required="1" id="numberAddress" name="numberAddress" maxlength="200"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
 											</div>
 											
 											<div class="form-group">
@@ -265,4 +286,7 @@
             buscaParoquias(0);
         });
     </script>
+
+
+
 </html>
