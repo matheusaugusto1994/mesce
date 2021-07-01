@@ -17,8 +17,14 @@ var FormValidation = function () {
                     name: {
                         required: true
                     },
+                    cep: {
+                        required: true
+                    },
 		            address: {
 		            	required: true
+		            },
+		            numberAddress: {
+                        required: true
 		            },
 		            phone: {
 		            	required: true
