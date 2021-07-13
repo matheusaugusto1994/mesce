@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Screen {
+public class ViewScreen {
     private String name;
     private String url;
 }

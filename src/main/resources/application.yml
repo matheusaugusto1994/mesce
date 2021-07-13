@@ -10,14 +10,6 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
-    max-active: 50
-    max-idle: 20
-    min-idle: 10
-    test-while-idle: true
-    test-on-borrow: true
-    validation-query: SELECT 1
-    time-between-eviction-runs-millis: 5000
-    min-evictable-idle-time-millis: 60000
 
   thymeleaf:
     mode: HTML5

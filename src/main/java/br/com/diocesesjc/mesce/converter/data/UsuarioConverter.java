@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,10 +18,12 @@ public class UsuarioConverter implements Converter<Usuario, UsuarioRequest, Usua
 
     private final PessoaConverter pessoaConverter;
     private final RoleConverter roleConverter;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UsuarioConverter(PessoaConverter pessoaConverter, RoleConverter roleConverter) {
+    public UsuarioConverter(PessoaConverter pessoaConverter, RoleConverter roleConverter, BCryptPasswordEncoder passwordEncoder) {
         this.pessoaConverter = pessoaConverter;
         this.roleConverter = roleConverter;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class UsuarioConverter implements Converter<Usuario, UsuarioRequest, Usua
         return Usuario.builder()
             .id(usuarioRequest.getId())
             .name(usuarioRequest.getName())
-            .password(usuarioRequest.getPassword())
+            .password(passwordEncoder.encode(usuarioRequest.getPassword()))
             .blocked(usuarioRequest.isBlocked())
             .pessoa(Pessoa.builder().id(usuarioRequest.getPessoaId()).build())
             .role(Role.builder().id(usuarioRequest.getRoleId()).build())
