@@ -23,11 +23,11 @@ public class Setor {
     private Long id;
     private String name;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "paroquia_id")
     private Paroquia paroquia;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario user;
 }
