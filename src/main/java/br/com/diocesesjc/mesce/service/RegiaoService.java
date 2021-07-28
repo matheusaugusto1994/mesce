@@ -5,12 +5,26 @@ import br.com.diocesesjc.mesce.dtos.request.RegiaoRequest;
 import br.com.diocesesjc.mesce.dtos.response.RegiaoResponse;
 import br.com.diocesesjc.mesce.entity.Regiao;
 import br.com.diocesesjc.mesce.repository.RegiaoRepository;
+import br.com.diocesesjc.mesce.service.chain.RegiaoChainService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RegiaoService extends CrudService<Regiao, RegiaoRepository, RegiaoConverter, RegiaoRequest, RegiaoResponse> {
 
-    public RegiaoService(RegiaoConverter regiaoConverter, RegiaoRepository regiaoRepository) {
+    private final RegiaoChainService regiaoChainService;
+    private final RegiaoConverter regiaoConverter;
+
+    public RegiaoService(RegiaoConverter regiaoConverter, RegiaoRepository regiaoRepository, RegiaoChainService regiaoChainService, RegiaoConverter regiaoConverter1) {
         super(regiaoRepository, regiaoConverter);
+        this.regiaoChainService = regiaoChainService;
+        this.regiaoConverter = regiaoConverter1;
+    }
+
+    @Override
+    public Page<RegiaoResponse> getDataByResource(String query, Pageable page) {
+        Page<Regiao> regioes = regiaoChainService.get(query, page);
+        return regiaoConverter.convert(regioes);
     }
 }

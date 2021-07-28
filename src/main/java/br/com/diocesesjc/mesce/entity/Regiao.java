@@ -1,7 +1,7 @@
 package br.com.diocesesjc.mesce.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,6 +22,7 @@ public class Regiao {
     @GeneratedValue
     private Long id;
     private String name;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario user;

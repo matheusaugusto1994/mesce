@@ -1,6 +1,7 @@
 package br.com.diocesesjc.mesce.entity;
 
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,9 +27,12 @@ public class Usuario implements UserDetails {
     private String password;
     private Boolean blocked;
 
-    @ManyToOne @JoinColumn(name="pessoa_id")
+    @ManyToOne
+    @JoinColumn(name="pessoa_id")
     private Pessoa pessoa;
-    @ManyToOne @JoinColumn(name="role_id")
+
+    @ManyToOne
+    @JoinColumn(name="role_id")
     private Role role;
 
     @Override

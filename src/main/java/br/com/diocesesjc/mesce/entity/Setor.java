@@ -1,5 +1,6 @@
 package br.com.diocesesjc.mesce.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,11 +23,11 @@ public class Setor {
     private Long id;
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "paroquia_id")
     private Paroquia paroquia;
 
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Usuario user;
 }

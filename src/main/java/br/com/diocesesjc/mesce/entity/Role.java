@@ -21,6 +21,7 @@ public class Role {
     @Id
     @GeneratedValue
     private Long id;
+
     @Enumerated(EnumType.STRING)
     private RoleType name;
     private String description;

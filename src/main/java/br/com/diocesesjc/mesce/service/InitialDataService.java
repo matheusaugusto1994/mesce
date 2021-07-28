@@ -106,7 +106,7 @@ public class InitialDataService {
         return List.of(
             RoleScreen.builder().screenType(ScreenType.SCREEN_REGIAO).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_PAROQUIAS).role(role).build(),
-            RoleScreen.builder().screenType(ScreenType.SCREEN_SETORES).role(role).build(),
+//            RoleScreen.builder().screenType(ScreenType.SCREEN_SETORES).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_USUARIOS).role(role).build()
         );
@@ -116,7 +116,7 @@ public class InitialDataService {
         Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_PASTORAL);
         return List.of(
             RoleScreen.builder().screenType(ScreenType.SCREEN_PAROQUIAS).role(role).build(),
-            RoleScreen.builder().screenType(ScreenType.SCREEN_SETORES).role(role).build(),
+//            RoleScreen.builder().screenType(ScreenType.SCREEN_SETORES).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_USUARIOS).role(role).build()
         );
@@ -125,7 +125,7 @@ public class InitialDataService {
     private List<RoleScreen> createRoleScreenCoordenadorMesce() {
         Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_MESCE);
         return List.of(
-            RoleScreen.builder().screenType(ScreenType.SCREEN_SETORES).role(role).build(),
+//            RoleScreen.builder().screenType(ScreenType.SCREEN_SETORES).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
             RoleScreen.builder().screenType(ScreenType.SCREEN_USUARIOS).role(role).build()
         );
