@@ -48,7 +48,7 @@ function buscaSetores(pagina){
 	var queryBusca = $("#queryBusca").val();
 
 	$.ajax({
-		url: "setor/" + pagina + "?q=" + queryBusca,
+		url: "setor/all/" + pagina + "?q=" + queryBusca,
 		method: "GET",
 		contentType: 'application/json; charset=utf-8',
 		success: function (data) {

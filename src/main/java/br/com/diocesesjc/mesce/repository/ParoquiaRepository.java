@@ -11,4 +11,6 @@ public interface ParoquiaRepository extends DataQueryFilteredRepository<Paroquia
     Page<Paroquia> findAllByUserIdAndNameIgnoreCaseContainingOrderByName(Long userId, String name, Pageable pageable);
 
     Page<Paroquia> findAllByRegiaoInAndNameIgnoreCaseContainingOrderByName(List<Regiao> regiao, String name, Pageable pageable);
+
+    List<Paroquia> findAllByRegiaoId(Long id);
 }

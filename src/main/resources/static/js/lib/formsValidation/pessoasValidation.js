@@ -71,17 +71,6 @@ var FormValidation = function () {
                 
             });
             
-            //Campo Especial, Tratado individualmente
-//            $( "#dtReciclagem" ).rules( "add", {
-//            	required: true
-//            });
-//            $( "#dtTreinamento" ).rules( "add", {
-//            	required: true
-//            });
-//            $( "#dtEntrada" ).rules( "add", {
-//            	required: true
-//            });
-            
             //apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.
             $('.select2me', form).change(function () {
             	form.validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input

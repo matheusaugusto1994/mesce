@@ -30,9 +30,14 @@ public abstract class CrudController<T extends CrudService, REQ extends DtoReque
         service.delete(id);
     }
 
-    @GetMapping("/{page}")
+    @GetMapping("/all/{page}")
     public ResponseEntity getAllByPage(
         @PathVariable Integer page, @RequestParam(value = "q", required = false, defaultValue = "") String query) {
         return ResponseEntity.ok(service.get(query, page));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getById(id));
     }
 }
