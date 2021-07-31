@@ -3,12 +3,17 @@ package br.com.diocesesjc.mesce.service;
 import br.com.diocesesjc.mesce.converter.data.Converter;
 import br.com.diocesesjc.mesce.dtos.request.DtoRequest;
 import br.com.diocesesjc.mesce.dtos.response.DtoResponse;
+import br.com.diocesesjc.mesce.entity.Usuario;
+import br.com.diocesesjc.mesce.enums.RoleType;
 import br.com.diocesesjc.mesce.repository.DataQueryFilteredRepository;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 
-public class CrudService<
+public abstract class CrudService<
     T,
     REPO extends DataQueryFilteredRepository<T, Long>,
     CONV extends Converter<T, REQ, RESP>,
@@ -23,14 +28,22 @@ public class CrudService<
         this.converter = converter;
     }
 
-    public void save(REQ request) {
-        T object = converter.convert(request);
-        repository.saveAndFlush(object);
-    }
+    public abstract Page<RESP> getDataByResource(String query, Pageable page);
 
     public Page<RESP> get(String query, Integer page) {
-        Page<T> objects = repository.findByNameIgnoreCaseContainingOrderByName(query, PageRequest.of(page, 10));
-        return converter.convert(objects);
+        Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (usuario.getRole().getName() == RoleType.ROLE_ADMIN) {
+            Page<T> objects = repository.findByNameIgnoreCaseContainingOrderByName(query, PageRequest.of(page, 10));
+            return converter.convert(objects);
+        }
+
+        return getDataByResource(query, PageRequest.of(page, 10));
+    }
+
+    @Transactional
+    public void save(REQ request) {
+        T object = converter.convert(request);
+        repository.save(object);
     }
 
     public void delete(Long id) {

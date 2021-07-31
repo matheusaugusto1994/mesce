@@ -1,5 +1,6 @@
 package br.com.diocesesjc.mesce.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
