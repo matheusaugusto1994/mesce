@@ -5,7 +5,8 @@ public enum ScreenType {
     SCREEN_USUARIOS("Usuários", "/usuarios"),
     SCREEN_REGIAO("Regiões", "/regioes"),
     SCREEN_PAROQUIAS("Paróquias", "/paroquias"),
-    SCREEN_SETORES("Setores", "/setores");
+    SCREEN_SETORES("Setores", "/setores"),
+    SCREEN_ACOES_RAPIDAS("Associar ministros", "/associar");
 
     private final String description;
     private final String pathUrl;

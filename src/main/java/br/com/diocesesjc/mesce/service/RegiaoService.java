@@ -15,16 +15,25 @@ public class RegiaoService extends CrudService<Regiao, RegiaoRepository, RegiaoC
 
     private final RegiaoChainService regiaoChainService;
     private final RegiaoConverter regiaoConverter;
+    private final PessoaParoquiaService pessoaParoquiaService;
 
-    public RegiaoService(RegiaoConverter regiaoConverter, RegiaoRepository regiaoRepository, RegiaoChainService regiaoChainService, RegiaoConverter regiaoConverter1) {
+    public RegiaoService(RegiaoConverter regiaoConverter, RegiaoRepository regiaoRepository, RegiaoChainService regiaoChainService, RegiaoConverter regiaoConverter1, PessoaParoquiaService pessoaParoquiaService) {
         super(regiaoRepository, regiaoConverter);
         this.regiaoChainService = regiaoChainService;
         this.regiaoConverter = regiaoConverter1;
+        this.pessoaParoquiaService = pessoaParoquiaService;
     }
 
     @Override
     public Page<RegiaoResponse> getDataByResource(String query, Pageable page) {
         Page<Regiao> regioes = regiaoChainService.get(query, page);
         return regiaoConverter.convert(regioes);
+    }
+
+    @Override
+    public Regiao save(RegiaoRequest request) {
+        Regiao regiao = super.save(request);
+        pessoaParoquiaService.updateRelation(regiao);
+        return regiao;
     }
 }

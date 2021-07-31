@@ -1,6 +1,5 @@
 package br.com.diocesesjc.mesce.dtos;
 
-import com.google.common.collect.Lists;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
@@ -10,5 +9,6 @@ import lombok.Data;
 public class ViewGroup {
     private String name;
     private String icon;
-    private List<ViewScreen> views = Lists.newArrayList();
+    private String url;
+    private List<ViewScreen> views;
 }

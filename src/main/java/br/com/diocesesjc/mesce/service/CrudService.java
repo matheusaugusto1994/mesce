@@ -41,9 +41,9 @@ public abstract class CrudService<
     }
 
     @Transactional
-    public void save(REQ request) {
+    public T save(REQ request) {
         T object = converter.convert(request);
-        repository.save(object);
+        return repository.save(object);
     }
 
     public void delete(Long id) {
@@ -59,4 +59,8 @@ public abstract class CrudService<
         return repository.count();
     }
 
+    public RESP getById(Long id) {
+        T object = repository.getOne(id);
+        return converter.convert(object);
+    }
 }

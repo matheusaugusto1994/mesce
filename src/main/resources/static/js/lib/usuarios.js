@@ -52,7 +52,7 @@ function buscaUsuarios(pagina){
 	var queryBusca = $("#queryBusca").val();
 
 	$.ajax({
-		url: "usuario/" + pagina + "?q=" + queryBusca,
+		url: "usuario/all/" + pagina + "?q=" + queryBusca,
 		method: "GET",
 		contentType: 'application/json; charset=utf-8',
 		success: function(data) {

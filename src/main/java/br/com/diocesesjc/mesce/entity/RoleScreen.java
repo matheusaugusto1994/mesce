@@ -1,11 +1,11 @@
 package br.com.diocesesjc.mesce.entity;
 
+import br.com.diocesesjc.mesce.enums.ScreenGroup;
 import br.com.diocesesjc.mesce.enums.ScreenType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,6 +25,9 @@ public class RoleScreen {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private ScreenGroup screenGroup;
 
     @Enumerated(EnumType.STRING)
     private ScreenType screenType;

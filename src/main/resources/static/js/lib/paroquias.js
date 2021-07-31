@@ -49,7 +49,7 @@ function buscaParoquias(pagina){
 	let queryBusca = $("#queryBusca").val();
 
 	$.ajax({
-		url: "paroquia/" + pagina + "?q=" + queryBusca,
+		url: "paroquia/all/" + pagina + "?q=" + queryBusca,
 		method: "GET",
 		contentType: 'application/json; charset=utf-8',
 		success: function(data) {

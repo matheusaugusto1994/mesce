@@ -66,7 +66,7 @@ function buscaPessoas(pagina){
 	var queryBusca = $("#queryBusca").val();
 
 	$.ajax({
-		url: "pessoa/" + pagina + "?q=" + queryBusca,
+		url: "pessoa/all/" + pagina + "?q=" + queryBusca,
 		method: "GET",
 		contentType: 'application/json; charset=utf-8',
 		success: function(data) {

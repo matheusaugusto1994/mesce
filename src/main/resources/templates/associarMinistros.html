@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+	<!--         <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" /> -->
+
+     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
+
+     <link href="/js/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+     <!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+     <link href="/js/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+     <link href="/js/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+     <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+     <!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN THEME GLOBAL STYLES -->
+     <link href="/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+     <link href="/css/plugins.min.css" rel="stylesheet" type="text/css" />
+     <!-- END THEME GLOBAL STYLES -->
+
+	<!-- BEGIN THEME LAYOUT STYLES -->
+     <link href="/css/layout.min.css" rel="stylesheet" type="text/css" />
+     <link href="/css/themes/grey.min.css" rel="stylesheet" type="text/css" id="style_color" />
+     <link href="/css/custom.min.css" rel="stylesheet" type="text/css" />
+     <!-- END THEME LAYOUT STYLES -->
+
+	<!-- BEGIN CORE PLUGINS -->
+     <script src="/js/plugins/jquery.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-switch/js/bootstrap-switch.js" type="text/javascript"></script>
+     <!-- END CORE PLUGINS -->
+
+	<!-- BEGIN THEME GLOBAL SCRIPTS -->
+     <script src="/js/scripts/app.js" type="text/javascript"></script>
+     <!-- END THEME GLOBAL SCRIPTS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+     <script src="/js/plugins/jquery.form.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery.serializejson.js" type="text/javascript"></script>
+     <script src="/js/plugins/funcoesBasicas.js" type="text/javascript"></script>
+     <script src="/js/plugins/maskedInput/jquery.maskedinput.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+     <!-- END PAGE LEVEL SCRIPTS -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+     <script src="/js/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+     <script src="/js/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+     <script src="/js/scripts/components-select2.js" type="text/javascript"></script>
+     <!-- END PAGE LEVEL PLUGINS -->
+
+     <!-- BEGIN THEME LAYOUT SCRIPTS -->
+     <script src="/js/scripts/layout.js" type="text/javascript"></script>
+     <script src="/js/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+     <script src="/js/scripts/demo.js" type="text/javascript"></script>
+     <!-- END THEME LAYOUT SCRIPTS -->
+     
+     <script th:inline="javascript" th:src="@{/js/lib/associarMinistros.js}"></script>
+     <script src="/js/lib/trocaSenha.js" type="text/javascript"></script>
+     
+</head>
+<!--     <span th:inline="text">[[${#httpServletRequest.remoteUser}]]</span> -->
+	<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
+
+	 	<!-- Header -->
+	 	<div th:replace="fragments/topo :: header">&nbsp;</div>
+
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+
+		<!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- Menu -->
+           	<div th:replace="fragments/menu :: menu">&nbsp;</div>
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                
+                    <!-- BEGIN PAGE HEADER-->
+                    <h3 class="page-title"> Associar Ministros </h3>
+                    <!-- END PAGE HEADER-->
+
+					<div class="row">
+                        <div class="col-md-12">
+
+							<div class="portlet light" >
+                       			<div class="portlet-title">
+		                             <div class="caption caption-md">
+		                                 <i class="icon-bar-chart theme-font hide"></i>
+		                                 <span class="caption-subject font-blue-madison bold uppercase">Busque aqui pelo nome da pessoa</span>
+		                             </div>
+	                         	</div>
+	                         	<div class="portlet-body">
+                        	 		<div class="row">
+                           				<div class="col-sm-12">
+				                           	<label for="nome">Nome</label>
+				                          	<select  class="form-control select2me" id="pessoa" name="pessoa[id]" onChange="buscaPessoa(this.value);" >
+                                           		<option value="">Selecione</option>
+                                           		<option th:each="pessoa : ${pessoas}" th:value="${pessoa.id}" th:text="${pessoa.name}"/>
+                                           	</select>
+                                 		</div>
+	                            	</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					
+					<div class="alert alert-danger" id="divError" style="display: none;"> Nenhum Resultado Encontrado. </div>
+
+					<div class="row" id="divAcoesPessoa" style="display: none;">
+                        <div class="col-md-12">
+
+                     		<!-- BEGIN PROFILE SIDEBAR -->
+                            <div class="profile-sidebar">
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light profile-sidebar-portlet ">
+                                    <!-- SIDEBAR USERPIC -->
+                                    <div class="profile-userpic">
+                                        <img id="imgPessoa" th:src="@{../img/profile.jpg}" class="img-responsive" alt="" style="max-height: 300px;"/> </div>
+                                    <!-- END SIDEBAR USERPIC -->
+                                    <!-- SIDEBAR USER TITLE -->
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name"> <span id="spanNomePessoa"></span> </div>
+                                    </div>
+                                    <!-- END SIDEBAR USER TITLE -->
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                            </div>
+                            <!-- END BEGIN PROFILE SIDEBAR -->
+							
+							<div class="profile-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div class="portlet light acoes" style="overflow: auto" id="div_info">
+                                            <div class="portlet-title">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-bar-chart theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Informações</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+												<div class="row">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Nome</span>
+														<span id="nome" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Endereço</span>
+														<span id="endereco" style="display: block;"></span>
+													</div>												
+												</div>	
+												<div class="row" style="margin-top: 20px">
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">E-mail</span>
+														<span id="email" style="display: block;"></span>
+													</div>												
+													<div class="col-sm-6">
+														<span class="profile-usertitle-job">Telefone</span>
+														<span id="telefone" style="display: block;"></span>
+													</div>
+												</div>
+                                            </div>
+                                        </div>
+
+										<div class="portlet light acoes" id="div_associarMinistro">
+											<div class="portlet-title">
+												<div class="caption caption-md">
+													<i class="icon-bar-chart theme-font hide"></i>
+													<span class="caption-subject font-blue-madison bold uppercase">Associar Ministros</span>
+												</div>
+											</div>
+											<div class="portlet-body">
+												<div class="form-group">
+													<div class="row">
+														<div class="col-sm-6 campoObrigratorio">
+															<label for="regioes">Região Pastoral </label>
+															<div class="input-icon right">
+																<i class="fa"></i>
+																<select  class="form-control select2me" id="regioes" name="regioes[id]" onChange="buscaParoquias(this.value);" >
+																	<option value="">Selecione</option>
+																	<option th:each="regiao : ${regioes}" th:value="${regiao.id}" th:text="${regiao.name}"/>
+																</select>
+															</div>
+														</div>
+
+														<div class="col-sm-6 campoObrigratorio">
+															<label for="paroquia">Paróquia</label>
+															<div class="input-icon right">
+																<i class="fa"></i>
+																<select class="form-control select2me" id="paroquia" name="paroquia[id]" onChange="associaParoquia(this.value);">
+																	<option value="">Selecione</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+                                    </div>
+								</div>
+							</div>
+                        </div>
+                   	</div>
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+		<!-- Footer -->
+       <div th:replace="fragments/rodape :: footer">&nbsp;</div>
+	</body>
+</html>

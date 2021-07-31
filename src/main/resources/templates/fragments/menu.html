@@ -25,12 +25,12 @@
         <ul th:each="viewGroup : ${viewGroup}" class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 
             <li class="nav-item" >
-                <a class="nav-link nav-toggle">
+                <a th:href="${viewGroup.url}" class="nav-link nav-toggle">
                     <i th:class="${viewGroup.icon}"></i>
                     <span class="title" th:text="${viewGroup.name}"></span>
                     <span class="arrow"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" th:if="${viewGroup.url==null}">
                     <li th:each="view : ${viewGroup.views}" class="nav-item">
                         <a th:href="${view.url}" class="nav-link ">
                             <span th:text="${view.name}" class="title"></span>

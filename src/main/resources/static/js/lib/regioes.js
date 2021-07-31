@@ -47,7 +47,7 @@ function buscaRegioes(pagina) {
     var queryBusca = $("#queryBusca").val();
 
     $.ajax({
-        url: "regiao/" + pagina + "?q=" + queryBusca,
+        url: "regiao/all/" + pagina + "?q=" + queryBusca,
         method: "GET",
         contentType: 'application/json; charset=utf-8',
         success: function (data) {

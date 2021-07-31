@@ -7,6 +7,7 @@ import br.com.diocesesjc.mesce.entity.Pessoa;
 import br.com.diocesesjc.mesce.entity.Role;
 import br.com.diocesesjc.mesce.entity.Usuario;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -31,7 +32,7 @@ public class UsuarioConverter implements Converter<Usuario, UsuarioRequest, Usua
         return Usuario.builder()
             .id(usuarioRequest.getId())
             .name(usuarioRequest.getName())
-            .password(passwordEncoder.encode(usuarioRequest.getPassword()))
+            .password(getEncodedPassword(usuarioRequest.getPassword()))
             .blocked(usuarioRequest.isBlocked())
             .pessoa(Pessoa.builder().id(usuarioRequest.getPessoaId()).build())
             .role(Role.builder().id(usuarioRequest.getRoleId()).build())
@@ -67,5 +68,13 @@ public class UsuarioConverter implements Converter<Usuario, UsuarioRequest, Usua
             .id(usuario.getId())
             .name(usuario.getPessoa().getName())
             .build();
+    }
+
+    private String getEncodedPassword(String password) {
+        String BCRYPT_PATTERN = "$2a$";
+        if (!password.startsWith(BCRYPT_PATTERN)) {
+            return passwordEncoder.encode(password);
+        }
+        return password;
     }
 }

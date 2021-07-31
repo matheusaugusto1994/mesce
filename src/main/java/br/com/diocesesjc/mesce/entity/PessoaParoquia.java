@@ -1,17 +1,18 @@
 package br.com.diocesesjc.mesce.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PessoaParoquia {
@@ -20,11 +21,11 @@ public class PessoaParoquia {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="pessoa_id")
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="paroquia_id")
+    @ManyToOne
+    @JoinColumn(name = "paroquia_id")
     private Paroquia paroquia;
 }
