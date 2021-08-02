@@ -7,6 +7,7 @@ import br.com.diocesesjc.mesce.dtos.response.PessoaParoquiaResponse;
 import br.com.diocesesjc.mesce.entity.Paroquia;
 import br.com.diocesesjc.mesce.entity.Pessoa;
 import br.com.diocesesjc.mesce.entity.PessoaParoquia;
+import br.com.diocesesjc.mesce.entity.Usuario;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -44,6 +45,13 @@ public class PessoaParoquiaConverter {
         return PessoaParoquia.builder()
             .paroquia(paroquia)
             .pessoa(paroquia.getUser().getPessoa())
+            .build();
+    }
+
+    public PessoaParoquia convert(Paroquia paroquia, Usuario usuario) {
+        return PessoaParoquia.builder()
+            .paroquia(paroquia)
+            .pessoa(usuario.getPessoa())
             .build();
     }
 }

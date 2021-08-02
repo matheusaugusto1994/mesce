@@ -82,7 +82,7 @@ public class InitialDataService {
         if (roleScreenRepository.count() == 0) {
             List<RoleScreen> roleScreens = List.of(
                 createRoleScreenAdmin(), createRoleScreenSupervisor(), createRoleScreenCoordenadorRegiao(),
-                createRoleScreenCoordenadorPastoral(), createRoleScreenCoordenadorMesce(), createRoleScreenMinistro())
+                createRoleScreenCoordenadorPastoral(),/* createRoleScreenCoordenadorMesce(),*/ createRoleScreenMinistro())
                 .stream().flatMap(List::stream).collect(Collectors.toList());
             roleScreenRepository.saveAll(roleScreens);
         }
@@ -125,15 +125,15 @@ public class InitialDataService {
         );
     }
 
-    private List<RoleScreen> createRoleScreenCoordenadorMesce() {
-        Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_MESCE);
-        return List.of(
-//            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_SETORES).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_USUARIOS).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_ACOES_RAPIDAS).screenType(ScreenType.SCREEN_ACOES_RAPIDAS).role(role).build()
-        );
-    }
+//    private List<RoleScreen> createRoleScreenCoordenadorMesce() {
+//        Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_MESCE);
+//        return List.of(
+////            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_SETORES).role(role).build(),
+//            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
+//            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_USUARIOS).role(role).build(),
+//            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_ACOES_RAPIDAS).screenType(ScreenType.SCREEN_ACOES_RAPIDAS).role(role).build()
+//        );
+//    }
 
     private List<RoleScreen> createRoleScreenMinistro() {
         Role role = roleRepository.findByName(RoleType.ROLE_MINISTRO);
