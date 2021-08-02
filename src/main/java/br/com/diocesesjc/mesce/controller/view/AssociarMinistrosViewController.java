@@ -1,8 +1,12 @@
 package br.com.diocesesjc.mesce.controller.view;
 
+import static br.com.diocesesjc.mesce.enums.RoleType.ROLE_MINISTRO;
+
+import br.com.diocesesjc.mesce.enums.RoleType;
 import br.com.diocesesjc.mesce.service.PessoaService;
 import br.com.diocesesjc.mesce.service.RegiaoService;
 import br.com.diocesesjc.mesce.service.ViewGroupService;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +26,7 @@ public class AssociarMinistrosViewController extends InternalViewController {
     @RequestMapping("/associar")
     public ModelAndView associar() {
         ModelAndView modelAndView = super.render("associarMinistros");
-        modelAndView.addObject("pessoas", pessoaService.getAll());
+        modelAndView.addObject("pessoas", pessoaService.findAllByRole(ROLE_MINISTRO));
         modelAndView.addObject("regioes", regiaoService.getAll());
         return modelAndView;
     }

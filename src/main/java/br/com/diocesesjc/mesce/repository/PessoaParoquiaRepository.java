@@ -33,4 +33,8 @@ public interface PessoaParoquiaRepository extends JpaRepository<PessoaParoquia, 
         Pageable pageable);
 
     PessoaParoquia findByPessoaId(Long id);
+
+    void deleteByPessoaIdAndParoquiaId(Long pessoaId, Long paroquiaId);
+
+    void deleteAllByPessoaId(Long pessoaId);
 }

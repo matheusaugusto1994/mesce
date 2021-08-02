@@ -41,8 +41,18 @@ public class ParoquiaService extends
 
     @Override
     public Paroquia save(ParoquiaRequest request) {
+        if (request.getId() != null) {
+            pessoaParoquiaService.deleteOldPessoaParoquia(request.getId());
+        }
+
         Paroquia paroquia = super.save(request);
-        pessoaParoquiaService.updateRelation(paroquia);
+        pessoaParoquiaService.createOrUpdate(paroquia);
         return paroquia;
+    }
+
+    @Override
+    public void delete(Long id) {
+        pessoaParoquiaService.deleteOldPessoaParoquia(id);
+        super.delete(id);
     }
 }

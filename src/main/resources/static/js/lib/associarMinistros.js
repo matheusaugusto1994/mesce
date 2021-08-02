@@ -57,21 +57,6 @@ function carregaImagem(id){
 	});
 }
 
-// function buscaRegioes(){
-// 	$.ajax({
-// 		url: "regiao/all",
-// 		method: "GET",
-// 		contentType: 'application/json; charset=utf-8',
-// 		success: function (data) {
-// 			$('#regioes').children('option:not(:first)').remove();
-//
-// 			$.each(data, function (key, value) {
-// 				$("#regioes").append($("<option>").attr("value", value.id).text(value.name));
-// 			});
-// 		}
-// 	})
-// }
-
 function buscaParoquias(regiaoId, paroquiaId){
 	if (!regiaoId) {
 		return
@@ -140,31 +125,6 @@ function associaParoquia(paroquiaId){
 	});
 }
 
-function removeNucleo(idNucleo){
-	
-	var idPessoa = $("#id").val();
-	
-	var json = {
-			"pessoa" : {"id":idPessoa},
-			"nucleo" : {"id":idNucleo}
-	}
-	
-	$.ajax({
-		url: "pessoaNucleo/removeNucleo",
-		method: "POST",
-		data: JSON.stringify(json),
-		method: "POST",
-		contentType: 'application/json; charset=utf-8',
-		success: function(data) {
-			toastr.success(data);
-		},
-		error: function(data) {
-			toastr.error(data);
-		}
-	});
-	
-}
-
 function limpaCampos(){
 	$("#pessoa").val('');
 
@@ -183,3 +143,19 @@ function carregaInfo(data) {
 	$("#email").text(data.pessoa.email);
 	$("#telefone").text(data.pessoa.phone);
 }
+
+$(function() {
+	$('#regioes').on('select2:unselecting', function (evt) {
+		$('.select2-selection__rendered').each(function () {
+			if ( $(this).attr("id") != "select2-pessoa-container" )
+				$(this).html('Selecione');
+		});
+
+		$("#paroquia").attr("disabled",true);
+	});
+
+	$('#paroquia').on('select2:unselecting', function (evt) {
+		$('#paroquia').html('Selecione');
+	});
+
+});

@@ -46,6 +46,7 @@ public abstract class CrudService<
         return repository.save(object);
     }
 
+    @Transactional
     public void delete(Long id) {
         repository.deleteById(id);
     }

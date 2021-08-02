@@ -1,13 +1,9 @@
 package br.com.diocesesjc.mesce.service.chain;
 
 import br.com.diocesesjc.mesce.entity.Paroquia;
-import br.com.diocesesjc.mesce.entity.Pessoa;
 import br.com.diocesesjc.mesce.repository.PessoaParoquiaRepository;
 import br.com.diocesesjc.mesce.repository.PessoaRepository;
-import com.google.common.collect.Lists;
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,6 +51,6 @@ public class PessoaChainService implements ChainService {
         List<Long> paroquiaIds = getParoquiaIds(pageParoquias);
         List<BigInteger> pessoaIds = pessoaParoquiaRepository.findAllPessoaIdsByParoquiaAndName(paroquiaIds, formatQuery(query), page).getContent();
         List<Long> ids = pessoaIds.stream().map(BigInteger::longValue).collect(Collectors.toList());
-        return new PageImpl(pessoaRepository.findAllByIdInAndOrderByName(ids));
+        return new PageImpl(pessoaRepository.findAllByIdAndOrderByName(ids));
     }
 }
