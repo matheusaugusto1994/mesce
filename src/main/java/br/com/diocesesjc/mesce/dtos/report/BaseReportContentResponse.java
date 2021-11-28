@@ -9,8 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReportResponse {
-
-    private String name;
-
+public class BaseReportContentResponse {
+    String name;
+    String link;
 }

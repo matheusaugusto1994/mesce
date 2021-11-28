@@ -51,14 +51,14 @@ function montaLista(data){
 	if (data) {
 		let headerTh = '';
 
-		$.each(data.header, function (key, header) {
+		$.each(data.headers, function (key, header) {
 			headerTh += '<th><div align="center">' + header + '</div> </th>';
 		});
 		
 		table = '<div class="portlet box blue">' +
 							'<div class="portlet-title">' +
 								'<div class="caption">' + 
-									'<i class="fa fa-picture"></i>Relatório Geral' +
+									'<i class="fa fa-picture"></i>' + data.reportName +
 								'</div>' + 
 							'</div>' +
 							'<div class="portlet-body">' +
@@ -69,10 +69,29 @@ function montaLista(data){
 										'</thead>'+
 										'<tbody>';
 
-		$.each(data, function (key, value) {
-			table += 			'<tr>' +
-				                    '<td align="center">' + value.name + '</td>' +
-			                    '</tr>';
+
+
+		$.each(data.content, function (key, value) {
+			// table += 			'<tr>' +
+			// 	                    '<td align="center">' + value.name + '</td>' +
+			//                     '</tr>';
+			let content = ""
+			Object.getOwnPropertyNames(value).forEach(function (val, i, arr) {
+				if (val !== "link") {
+					content += '<td align="center">' + value[val] + '</td>';
+				}
+			})
+
+			if (value["link"] != null) {
+				let func = "abreOpcoesTotais('" + value['link'] + "')"
+				content += '<td align="center">' +
+						'<a style="cursor:pointer;" data-original-title="Filtrar" class="btn btn-icon-only blue tooltips" onClick=' + func + '>' +
+							'<i class="fa fa-search"></i>' +
+						'</a>' +
+					'</td>'
+			}
+
+			table += '<tr>' + content + '</tr>';
 		});
 
 		table += 			'</tbody>'+
@@ -96,8 +115,8 @@ function clearChildren(element){
 	return element;
 }
 
-function abreFechaRelatorio() {
-	if( $("#pageHome").attr("style") == "display: none;" ){
+function abreFechaRelatorio(backPage) {
+	if(backPage && $("#pageHome").attr("style") == "display: none;"){
 		$("#relatorio").hide();
 		$("#pageHome").show(700);
 		$("#brasao").show(700);

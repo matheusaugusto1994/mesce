@@ -23,7 +23,7 @@ public class ParoquiaChainService implements ChainService {
     @Override
     public Page get(String query, Pageable page) {
         Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (usuario.getRole().getName() == RoleType.ROLE_COORDENADOR_PASTORAL) {
+        if (usuario.getRole().getName() == RoleType.ROLE_COORDENADOR_PAROQUIAL) {
             return paroquiaRepository.findAllByUserIdAndNameIgnoreCaseContainingOrderByName(usuario.getId(), query, page);
         }
 

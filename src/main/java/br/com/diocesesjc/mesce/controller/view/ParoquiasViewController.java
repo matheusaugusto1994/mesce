@@ -1,8 +1,7 @@
 package br.com.diocesesjc.mesce.controller.view;
 
-import static br.com.diocesesjc.mesce.enums.RoleType.ROLE_COORDENADOR_PASTORAL;
+import static br.com.diocesesjc.mesce.enums.RoleType.ROLE_COORDENADOR_PAROQUIAL;
 
-import br.com.diocesesjc.mesce.enums.RoleType;
 import br.com.diocesesjc.mesce.service.RegiaoService;
 import br.com.diocesesjc.mesce.service.UsuarioService;
 import br.com.diocesesjc.mesce.service.ViewGroupService;
@@ -26,7 +25,7 @@ public class ParoquiasViewController extends InternalViewController {
     @GetMapping("/paroquias")
     public ModelAndView paroquias() {
         ModelAndView modelAndView = super.render("paroquias");
-        modelAndView.addObject("users", usuarioService.getAllByRole(List.of(ROLE_COORDENADOR_PASTORAL)));
+        modelAndView.addObject("users", usuarioService.getAllByRole(List.of(ROLE_COORDENADOR_PAROQUIAL)));
         modelAndView.addObject("regioes", regiaoService.getAll());
         return modelAndView;
     }

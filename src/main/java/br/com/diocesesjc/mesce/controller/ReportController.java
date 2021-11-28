@@ -23,8 +23,8 @@ public class ReportController {
         return ResponseEntity.ok(reportService.getAllCounters());
     }
 
-    @GetMapping("/general/{typeCard}")
-    public ResponseEntity getReportCard(@PathVariable String typeCard) {
-        return ResponseEntity.ok(reportService.getDataByTypeCard(typeCard));
+    @GetMapping("/general/{typeCard}/{id}")
+    public ResponseEntity getReportCard(@PathVariable String typeCard, @PathVariable(required = false) String id) {
+        return ResponseEntity.ok(reportService.getDataByTypeCard(typeCard, id));
     }
 }

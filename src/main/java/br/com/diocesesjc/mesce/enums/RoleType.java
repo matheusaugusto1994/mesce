@@ -4,7 +4,7 @@ public enum RoleType {
     ROLE_ADMIN("Administrador"),
     ROLE_SUPERVISOR("Supervisor/Padre"),
     ROLE_COORDENADOR_REGIAO("Coordenador de Região Pastoral"),
-    ROLE_COORDENADOR_PASTORAL("Coordenador de pastoral"),
+    ROLE_COORDENADOR_PAROQUIAL("Coordenador Paroquial/Padre Paroquial"),
 //    ROLE_COORDENADOR_MESCE("Coordenador MESCE"),
     ROLE_MINISTRO("Ministro");
 

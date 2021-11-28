@@ -32,7 +32,7 @@ public abstract class CrudService<
 
     public Page<RESP> get(String query, Integer page) {
         Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (usuario.getRole().getName() == RoleType.ROLE_ADMIN) {
+        if (usuario.getRole().getName() == RoleType.ROLE_ADMIN || usuario.getRole().getName() == RoleType.ROLE_SUPERVISOR) {
             Page<T> objects = repository.findByNameIgnoreCaseContainingOrderByName(query, PageRequest.of(page, 10));
             return converter.convert(objects);
         }

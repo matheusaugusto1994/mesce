@@ -7,6 +7,8 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class RegiaoReportResponse extends BaseReportContentResponse {
+public class ParoquiaReportResponse extends BaseReportContentResponse {
+    String phone;
+    String regiaoName;
     String userName;
 }

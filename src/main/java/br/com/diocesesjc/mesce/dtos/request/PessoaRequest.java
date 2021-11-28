@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+
 public class PessoaRequest extends DtoRequest {
     private String address;
     private String numberAddress;

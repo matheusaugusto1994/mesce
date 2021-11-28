@@ -2,27 +2,29 @@ package br.com.diocesesjc.mesce.converter.report;
 
 import br.com.diocesesjc.mesce.dtos.report.RegiaoReportResponse;
 import br.com.diocesesjc.mesce.dtos.response.RegiaoResponse;
+import br.com.diocesesjc.mesce.utils.Constants;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RegiaoReportConvert implements ReportConverter<RegiaoReportResponse, RegiaoResponse> {
+public class RegiaoReportConvert extends ReportConverter<RegiaoResponse, RegiaoReportResponse> {
 
     @Override
-    public String name() {
+    String name() {
         return "Relatório Geral de Regiões";
     }
 
     @Override
-    public List<String> headers() {
-        return List.of("Região", "Coordenador");
+    List<String> headers() {
+        return List.of("Região", "Coordenador", "Paróquias");
     }
 
     @Override
-    public List<RegiaoReportResponse> convert(List<RegiaoResponse> list) {
-        return list.stream()
-            .map(regiao -> RegiaoReportResponse.builder()
-                .name(regiao.getName())
-                .userName(regiao.getUser().getName())
+    List<RegiaoReportResponse> content(List<RegiaoResponse> data) {
+        return data.stream()
+            .map(r -> RegiaoReportResponse.builder()
+                .name(r.getName())
+                .userName(r.getUser().getName())
+                .link(Constants.TOTAL_PAROQUIAS + "/" + r.getId())
                 .build())
             .collect(Collectors.toList());
     }

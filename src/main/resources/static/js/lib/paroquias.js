@@ -86,7 +86,7 @@ function montaLista(data){
 			'<tbody>';
 
 		$.each(content, function (key, value) {
-				let userName = value.user.name ? value.user.name : '-';
+				let userName = value.user?.name ? value.user.name : '-';
 				paroquias += 			'<tr>'+
 											'<td align="center">' + value.name + '</td>' +
 											'<td align="center">' + value.phone + '</td>' +
@@ -110,7 +110,7 @@ function montaLista(data){
 					'</div>';
 
 		if (data.pageable) {
-			montaPaginacao(data.totalPages, data.number)
+			montaPaginacao(data.totalPages, data.pageable.pageNumber)
 		}
 
 	} else {
@@ -187,7 +187,12 @@ function deleteParoquia(idParoquia){
 
 function montaPaginacao(totalPaginas, pagina) {
 	let cont = 1;
-	pagina += 1
+
+	if (pagina === 0) {
+		pagina = 1
+	} else {
+		pagina++
+	}
 
 	$('.divPaginacao').bootpag({
 		total: totalPaginas,
@@ -208,7 +213,7 @@ function montaPaginacao(totalPaginas, pagina) {
 		if(cont > 1)
 			return
 
-		buscaParoquias(num -1);
+		buscaParoquias(num - 1);
 		cont +=1;
 	});
 }

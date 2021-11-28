@@ -47,7 +47,7 @@ public class ParoquiaConverter implements Converter<Paroquia, ParoquiaRequest, P
             .address(paroquia.getAddress())
             .numberAddress(paroquia.getNumberAddress())
             .regiao(regiaoConverter.toDtoResponse(paroquia.getRegiao()))
-            .user(usuarioConverter.toDtoResponse(paroquia.getUser()))
+            .user(paroquia.getUser() != null ? usuarioConverter.toDtoResponse(paroquia.getUser()) : null)
             .build();
     }
 

@@ -21,7 +21,7 @@ public class RegiaoChainService implements ChainService {
     public Page get(String query, Pageable page) {
         Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (usuario.getRole().getName() == RoleType.ROLE_COORDENADOR_REGIAO ||
-            usuario.getRole().getName() == RoleType.ROLE_SUPERVISOR) {
+            usuario.getRole().getName() == RoleType.ROLE_COORDENADOR_PAROQUIAL) {
             return regiaoRepository.findAllByUserIdAndNameIgnoreCaseContainingOrderByName(usuario.getId(), query, page);
         }
 

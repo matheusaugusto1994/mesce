@@ -110,8 +110,8 @@
 						<!-- BEGIN DASHBOARD STATS 1-->
 	                    <div class="row">
 	                    	
-	                        <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totRegioes');">
+	                        <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totRegioes/null');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
@@ -122,8 +122,8 @@
 	                                </div>
 	                            </a>
 	                        </div>
-	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totParoquias');">
+	                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totParoquias/null');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
@@ -134,20 +134,20 @@
 	                                </div>
 	                            </a>
 	                        </div>
-	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totSetores');">
-	                                <div class="visual">
-	                                </div>
-	                                <div class="details">
-	                                    <div class="number">
-	                                        <span id="totSetores" data-counter="counterup" data-value="549">0</span>
-	                                    </div>
-	                                    <div class="desc"> Setores </div>
-	                                </div>
-	                            </a>
-	                        </div>
-	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totPessoas');">
+<!--	                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">-->
+<!--	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totSetores/null');">-->
+<!--	                                <div class="visual">-->
+<!--	                                </div>-->
+<!--	                                <div class="details">-->
+<!--	                                    <div class="number">-->
+<!--	                                        <span id="totSetores" data-counter="counterup" data-value="549">0</span>-->
+<!--	                                    </div>-->
+<!--	                                    <div class="desc"> Setores </div>-->
+<!--	                                </div>-->
+<!--	                            </a>-->
+<!--	                        </div>-->
+	                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+	                            <a class="dashboard-stat dashboard-stat-v2 card-color-custom" style="cursor: pointer;" onClick="abreOpcoesTotais('totPessoas/null');">
 	                                <div class="visual">
 	                                </div>
 	                                <div class="details">
@@ -167,7 +167,7 @@
 					<div id="relatorio" style="display: none" >
 						<div class="row">
 							<div class="col-md-12">
-								<button class="btn btn-primary" onClick="abreFechaRelatorio()">Voltar</button>
+								<button class="btn btn-primary" onClick="abreFechaRelatorio(true)">Voltar</button>
 							</div>
 						</div>
 						<div id="detalhesRelatorio" style="margin-top: 20px"></div>
@@ -175,7 +175,7 @@
 
 					<div id="brasao" class="index-body-wrapper-imgs">
 						<div>
-							<img alt="" class="index-body-img" th:src="@{/img/diocese.png}" />
+							<img alt="" class="index-body-img" th:src="@{/img/diocese2.png}" />
 						</div>
 					</div>
 

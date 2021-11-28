@@ -203,7 +203,12 @@ function deleteUsuario(idUsuario){
 
 function montaPaginacao(totalPaginas, pagina){
 	let cont = 1;
-	pagina += 1
+
+	if (pagina === 0) {
+		pagina = 1
+	} else {
+		pagina++
+	}
 
 	$('.divPaginacao').bootpag({
 		total: totalPaginas,

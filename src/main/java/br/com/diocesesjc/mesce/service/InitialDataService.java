@@ -11,7 +11,6 @@ import br.com.diocesesjc.mesce.repository.PessoaRepository;
 import br.com.diocesesjc.mesce.repository.RoleRepository;
 import br.com.diocesesjc.mesce.repository.RoleScreenRepository;
 import br.com.diocesesjc.mesce.repository.UsuarioRepository;
-import com.google.common.collect.Lists;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,7 +81,7 @@ public class InitialDataService {
         if (roleScreenRepository.count() == 0) {
             List<RoleScreen> roleScreens = List.of(
                 createRoleScreenAdmin(), createRoleScreenSupervisor(), createRoleScreenCoordenadorRegiao(),
-                createRoleScreenCoordenadorPastoral(),/* createRoleScreenCoordenadorMesce(),*/ createRoleScreenMinistro())
+                createRoleScreenCoordenadorParoquial(),/* createRoleScreenCoordenadorMesce(),*/ createRoleScreenMinistro())
                 .stream().flatMap(List::stream).collect(Collectors.toList());
             roleScreenRepository.saveAll(roleScreens);
         }
@@ -103,6 +102,25 @@ public class InitialDataService {
         return getAllRoleScreens(role);
     }
 
+    private List<RoleScreen> createRoleScreenCoordenadorParoquial() {
+        Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_PAROQUIAL);
+        return List.of(
+            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PAROQUIAS).role(role).build(),
+//            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_SETORES).role(role).build(),
+            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
+            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_USUARIOS).role(role).build(),
+            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_ACOES_RAPIDAS).screenType(ScreenType.SCREEN_ACOES_RAPIDAS).role(role).build()
+        );
+    }
+
+    private List<RoleScreen> createRoleScreenMinistro() {
+        Role role = roleRepository.findByName(RoleType.ROLE_MINISTRO);
+        return List.of(
+            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
+            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_USUARIOS).role(role).build()
+        );
+    }
+
     private List<RoleScreen> getAllRoleScreens(Role role) {
         return List.of(
             RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_REGIAO).role(role).build(),
@@ -114,16 +132,7 @@ public class InitialDataService {
         );
     }
 
-    private List<RoleScreen> createRoleScreenCoordenadorPastoral() {
-        Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_PASTORAL);
-        return List.of(
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PAROQUIAS).role(role).build(),
-//            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_SETORES).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_USUARIOS).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_ACOES_RAPIDAS).screenType(ScreenType.SCREEN_ACOES_RAPIDAS).role(role).build()
-        );
-    }
+
 
 //    private List<RoleScreen> createRoleScreenCoordenadorMesce() {
 //        Role role = roleRepository.findByName(RoleType.ROLE_COORDENADOR_MESCE);
@@ -135,11 +144,5 @@ public class InitialDataService {
 //        );
 //    }
 
-    private List<RoleScreen> createRoleScreenMinistro() {
-        Role role = roleRepository.findByName(RoleType.ROLE_MINISTRO);
-        return List.of(
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_PESSOAS).role(role).build(),
-            RoleScreen.builder().screenGroup(ScreenGroup.GROUP_CADASTROS).screenType(ScreenType.SCREEN_USUARIOS).role(role).build()
-        );
-    }
+
 }

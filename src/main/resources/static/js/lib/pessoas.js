@@ -253,8 +253,13 @@ function deletePessoa(idPessoa){
 
 
 function montaPaginacao(totalPaginas, pagina){
-	pagina += 1;
 	let cont = 1;
+
+	if (pagina === 0) {
+		pagina = 1
+	} else {
+		pagina++
+	}
 
 	$('.divPaginacao').bootpag({
 	    total: totalPaginas,
