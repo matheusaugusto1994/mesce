@@ -139,7 +139,7 @@ function limpaCampos(){
 
 function carregaInfo(data) {
 	$("#nome").text(data.pessoa.name);
-	$("#endereco").text(data.pessoa.address + data.pessoa.numberAddress);
+	$("#endereco").text(data.pessoa.address + data.pessoa.numberAddress + " - " + data.pessoa.postalCode);
 	$("#email").text(data.pessoa.email);
 	$("#telefone").text(data.pessoa.phone);
 }

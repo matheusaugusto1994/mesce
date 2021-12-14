@@ -65,8 +65,8 @@ public class UsuarioConverter implements Converter<Usuario, UsuarioRequest, Usua
 
     public DtoResponse toDtoResponse(Usuario usuario) {
         return DtoResponse.builder()
-            .id(usuario.getId())
-            .name(usuario.getPessoa().getName())
+            .id(usuario != null ? usuario.getId() : null)
+            .name(usuario != null ? usuario.getPessoa().getName() : null)
             .build();
     }
 

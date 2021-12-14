@@ -23,7 +23,7 @@ public class RegiaoReportConvert extends ReportConverter<RegiaoResponse, RegiaoR
         return data.stream()
             .map(r -> RegiaoReportResponse.builder()
                 .name(r.getName())
-                .userName(r.getUser().getName())
+                .userName(r.getUser().getName() != null ? r.getUser().getName() : "")
                 .link(Constants.TOTAL_PAROQUIAS + "/" + r.getId())
                 .build())
             .collect(Collectors.toList());

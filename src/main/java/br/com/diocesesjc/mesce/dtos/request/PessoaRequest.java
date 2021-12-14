@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 
 public class PessoaRequest extends DtoRequest {
     private String address;
+    private String postalCode;
     private String numberAddress;
     private String email;
     private String phone;

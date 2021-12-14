@@ -6,11 +6,13 @@ import br.com.diocesesjc.mesce.converter.data.PessoaConverter;
 import br.com.diocesesjc.mesce.dtos.request.PessoaRequest;
 import br.com.diocesesjc.mesce.dtos.response.PessoaResponse;
 import br.com.diocesesjc.mesce.entity.Pessoa;
+import br.com.diocesesjc.mesce.entity.Usuario;
 import br.com.diocesesjc.mesce.enums.RoleType;
 import br.com.diocesesjc.mesce.repository.PessoaRepository;
 import br.com.diocesesjc.mesce.repository.UsuarioRepository;
 import br.com.diocesesjc.mesce.service.chain.PessoaChainService;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -43,8 +45,8 @@ public class PessoaService extends
         return pessoaConverter.convert(pessoas);
     }
 
-    public List<PessoaResponse> findAllByRole(RoleType roleType) {
-        List<Pessoa> pessoas = usuarioRepository.findAllPessoaByRoleNameOrderByPessoaName(roleType);
+    public List<PessoaResponse> findAllWithUser() {
+        List<Pessoa> pessoas = usuarioRepository.findAll().stream().map(Usuario::getPessoa).collect(Collectors.toList());
         return pessoaConverter.convert(pessoas);
     }
 }

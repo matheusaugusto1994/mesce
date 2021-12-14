@@ -1,0 +1,12 @@
+select concat("(", id, ", '", descricao, "', '", role, "')") from role
+
+INSERT INTO role (id, description, name) values
+(1, 'Administrador', 'ROLE_ADMIN'),
+(2, 'Supervisor', 'ROLE_SUPERVISOR'),
+(3, 'Coordenador região', 'ROLE_COORDENADOR_REGIAO'),
+(4, 'Vice Coordenador regiao', 'ROLE_VICE_REGIAO'),
+(5, 'Coordenador pastoral', 'ROLE_COORDENADOR_PASTORAL'),
+(6, 'Vice Coordenador pastoral', 'ROLE_VICE_PASTORAL'),
+(7, 'Coordenador nucleo', 'ROLE_COORDENADOR_NUCLEO'),
+(8, 'Vice Coordenador nucleo', 'ROLE_VICE_NUCLEO'),
+(9, 'Ministro', 'ROLE_MINISTRO');

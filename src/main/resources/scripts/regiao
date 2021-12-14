@@ -1,0 +1,13 @@
+select concat("(", id, ", '", nome, "', ", coordenador_id, "),") from regiao
+
+INSERT INTO regiao(id, name, user_id) values
+(1, 'Região Pastoral São José', 451),
+(2, 'Região Pastoral Sant’ana', 210),
+(3, 'Região Pastoral São Judas Tadeu', 73),
+(4, 'Região Pastoral Santo Antônio', 33),
+(5, 'Região Pastoral Nossa Senhora de Lourdes', 39),
+(6, 'Região Pastoral Nossa Senhora da Santíssima Trindade', 370),
+(7, 'Região Pastoral Imaculada Conceição', 168),
+(8, 'Região Pastoral São Paulo Apóstolo', 33);
+
+alter table regiao auto_increment = 10;

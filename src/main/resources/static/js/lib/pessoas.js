@@ -462,7 +462,7 @@ var waitingDialog = waitingDialog || (function ($) {
 })(jQuery);
 
 $(function($){
-	$("#cep").change(function(){
+	$("#postalCode").change(function(){
 		$.ajax({
 			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
 			dataType: 'json',

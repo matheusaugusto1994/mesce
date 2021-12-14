@@ -17,7 +17,7 @@ var FormValidation = function () {
                     name: {
                         required: true
                     },
-                    cep: {
+                    postalCode: {
                         required: true
                     },
 		            address: {
